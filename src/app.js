@@ -1,6 +1,6 @@
 import express from 'express';
 import logger from './config/winston.config.js';
-import __dirname from './utils.js';
+import __dirname from './helpers/utils.js';
 import viewsRouter from './routes/views.router.js';
 import usersRouter from './routes/users.router.js';
 import productsRouter from './routes/products.router.js';
@@ -11,6 +11,9 @@ import dotenvConfig from './config/dotenv.config.js';
 const app = express();
 const PORT = dotenvConfig.app.PORT || 8080;
 const HOST = dotenvConfig.app.HOST || '127.0.0.1'
+
+logger.log('debug',`Dirname en app : ${__dirname}`)
+
 
 // Template config engine
 app.set('views',__dirname+'/views');
@@ -30,6 +33,5 @@ app.use('/api/products', productsRouter);
 
 //starting de server
 const server = app.listen(PORT, () => {
-    console.log(`Server listen in ${PORT}`)
     logger.log('info',`Server listen in http://${HOST}:${PORT}`)
 });

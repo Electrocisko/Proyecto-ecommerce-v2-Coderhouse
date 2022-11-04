@@ -1,8 +1,6 @@
 import dotenv from 'dotenv'
 import logger from './winston.config.js';
 
-
-
 logger.log('debug',process.env.MONGO_URL)
 
 dotenv.config();
