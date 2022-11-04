@@ -2,7 +2,10 @@ import express from 'express';
 import logger from './config/winston.config.js';
 import __dirname from './utils.js';
 import viewsRouter from './routes/views.router.js';
+import usersRouter from './routes/users.router.js';
+import productsRouter from './routes/products.router.js';
 import dotenvConfig from './config/dotenv.config.js';
+
 
 //initializations
 const app = express();
@@ -13,17 +16,20 @@ const HOST = dotenvConfig.app.HOST || '127.0.0.1'
 app.set('views',__dirname+'/views');
 app.set('view engine', 'ejs');
 
-
 // middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+//static files
 app.use("/", express.static(__dirname + "/public"));
 
 // routes
 app.use('/',viewsRouter);
+app.use('/api/users', usersRouter);
+app.use('/api/products', productsRouter);
 
 //starting de server
 const server = app.listen(PORT, () => {
     console.log(`Server listen in ${PORT}`)
     logger.log('info',`Server listen in http://${HOST}:${PORT}`)
-})
+});

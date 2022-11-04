@@ -1,10 +1,11 @@
-import dotenv from 'dotenv';
+import dotenv from 'dotenv'
+import logger from './winston.config.js';
 
-let configPath = process.env.NODE_ENV+'.env'
 
-dotenv.config({
-    path: configPath
-});
+
+logger.log('debug',process.env.MONGO_URL)
+
+dotenv.config();
 
 export default {
     app: {
