@@ -7,4 +7,6 @@ router.get('/',getUsersController);
 
 router.post('/', postUsersController);
 
+
+
 export default router;

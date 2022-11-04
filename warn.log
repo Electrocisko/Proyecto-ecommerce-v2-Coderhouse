@@ -1,2 +1,5 @@
 [2022-11-04T11:18:22.411Z] error Error in mongoose connect Error: MongooseError: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
 [2022-11-04T12:27:48.304Z] error Error mongodb save  ObjectParameterError: Parameter "obj" to Document() must be an object, got {"name":"Charles Leclerc","email":"lecler@correo.com","password":"123","address":"Monaco x","age":"25","phoneNumber":"1","imageUrl":"1666630007964-2022-10-03 (6).png","admin":false}
+[2022-11-04T13:51:35.017Z] error Error mongodb getById  ReferenceError: ObjectId is not defined
+[2022-11-04T14:30:31.618Z] error Error in userservices update by IDTypeError: services.productsService is not a function
+[2022-11-04T14:30:51.383Z] error Error in userservices update by IDTypeError: services.productsService is not a function
