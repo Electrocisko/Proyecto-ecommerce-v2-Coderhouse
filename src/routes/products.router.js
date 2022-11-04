@@ -7,17 +7,18 @@ import {
   deleteProductByIdControler,
   updateProductControler
 } from "../controllers/products.controllers.js";
+import upLoader from '../helpers/storageImg.js';
 
 const router = new Router();
 
 router.get("/",getProductsController);
 
-router.post("/", checkAdmin, postProductsController);
+router.post("/", checkAdmin, upLoader.single('thumbnail') ,postProductsController);
 
 router.get("/:pid", getProductByIdController);
 
 router.delete("/:pid", checkAdmin, deleteProductByIdControler);
 
-router.put("/:pid", checkAdmin, updateProductControler);
+router.put("/:pid", checkAdmin, upLoader.single('thumbnail'), updateProductControler);
 
 export default router;
