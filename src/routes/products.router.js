@@ -1,4 +1,5 @@
 import { Router } from "express";
+import checkAdmin from "../helpers/checkAuth.js";
 import {
   getProductsController,
   postProductsController,
@@ -9,14 +10,14 @@ import {
 
 const router = new Router();
 
-router.get("/", getProductsController);
+router.get("/",getProductsController);
 
-router.post("/", postProductsController);
+router.post("/", checkAdmin, postProductsController);
 
 router.get("/:pid", getProductByIdController);
 
-router.delete("/:pid", deleteProductByIdControler);
+router.delete("/:pid", checkAdmin, deleteProductByIdControler);
 
-router.put("/:pid",updateProductControler);
+router.put("/:pid", checkAdmin, updateProductControler);
 
 export default router;

@@ -6,6 +6,7 @@ import {
   updateProduct,
 } from "../services/products.services.js";
 
+
 const getProductsController = async (req, res) => {
   let data = await getAllProducts();
   return res.json(data);

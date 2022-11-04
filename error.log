@@ -3,3 +3,5 @@
 [2022-11-04T13:51:35.017Z] error Error mongodb getById  ReferenceError: ObjectId is not defined
 [2022-11-04T14:30:31.618Z] error Error in userservices update by IDTypeError: services.productsService is not a function
 [2022-11-04T14:30:51.383Z] error Error in userservices update by IDTypeError: services.productsService is not a function
+[2022-11-04T16:43:52.643Z] error Error mongodb save  ValidationError: description: Path `description` is required.
+[2022-11-04T16:44:20.848Z] error Error mongodb save  ValidationError: description: Path `description` is required.

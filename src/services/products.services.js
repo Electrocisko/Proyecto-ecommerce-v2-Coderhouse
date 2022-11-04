@@ -11,14 +11,20 @@ const getAllProducts = async () => {
 };
 
 const saveProducts = async (data) => {
-    await services.productsService.save(data);
+    try {
+        await services.productsService.save(data);
     return data
+    } catch (error) {
+        logger.log('error',`Error in products.services save ${error}`)
+    } 
 };
 
 const getProductById = async (id) => {
     try {
         let product = await services.productsService.getById(id);
-        return product
+        if (product !== null) {return product}
+        else { return {message: '"non existent product"'}}
+
     } catch (error) {
         logger.log('error',`Error in products.services get by ID${error}`)
     }
@@ -27,7 +33,8 @@ const getProductById = async (id) => {
 const deleteProductById = async (id) => {
     try {
         let result = await services.productsService.deleteById(id);
-        return result;
+        if (result === false) return { message: 'error in deleting product'}
+        else { return result}
     } catch (error) {
         logger.log('error',`Error in products.services delete by ID${error}`)
     }
