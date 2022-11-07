@@ -22,8 +22,8 @@ switch (persistence) {
     case "mongodb":
       const { default: MongoProduct } = await import("./mongoDAO/mongodbProducts.js");
       productsService = new MongoProduct();
-    //   const { default: MongoCarts } = await import("./MongoDAO/MongoCarts.js");
-    //   cartsService = new MongoCarts();
+      const { default: MongoCarts } = await import("./MongoDAO/mongodbCarts.js");
+      cartsService = new MongoCarts();
       const { default: MongoUser } = await import("./mongoDao/mongodbUsers.js");
       usersService = new MongoUser();
       break;
