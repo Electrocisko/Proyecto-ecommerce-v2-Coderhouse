@@ -1,3 +1,4 @@
+import logger from "../config/winston.config.js";
 import {
   getAllProducts,
   saveProducts,
@@ -13,6 +14,7 @@ const getProductsController = async (req, res) => {
 };
 
 const postProductsController = async (req, res) => {
+  logger.log('debug', `postproduct contoller ${JSON.stringify(req.body)}`)
   const data = req.body;
   data.thumbnail = req.file.filename;
   await saveProducts(data);

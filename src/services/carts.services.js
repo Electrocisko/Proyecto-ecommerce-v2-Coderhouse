@@ -11,10 +11,10 @@ const getAllCarts = async () => {
     }
 };
 
-const saveCart = async (data) => {
+const saveCart = async () => {
     try {
-        await services.cartsService.save(data);
-    return data
+       let result =  await services.cartsService.saveCart();
+    return result
     } catch (error) {
         logger.log('error',`Error in carts.services save ${error}`)
     } 
@@ -50,10 +50,23 @@ const updateCart = async (id,newData) => {
     }
 };
 
+const getPopulateCart = async (id) => {
+    try {
+        let result = await services.cartsService.getByIdAndPopulate(id);
+        return result;
+    } catch (error) {
+        logger.log('error',`Error in carts.services get populate by ID${error}`)
+    }
+}
+
+
+
+
 export {
     getAllCarts,
     saveCart,
     getCartById,
     deleteCartById,
-    updateCart
+    updateCart,
+    getPopulateCart
 }

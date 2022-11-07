@@ -12,8 +12,7 @@ const getCartsController = async (req, res) => {
   };
 
   const postCartsController = async (req, res) => {
-    const data = req.body;
-    await saveCart(data);
+   let data =  await saveCart();
     res.status(201).json(data);
   };
 

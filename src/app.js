@@ -5,6 +5,7 @@ import viewsRouter from './routes/views.router.js';
 import usersRouter from './routes/users.router.js';
 import cartsRouter from './routes/carts.router.js';
 import productsRouter from './routes/products.router.js';
+import sessionsRouter from './routes/sessions.router.js';
 import dotenvConfig from './config/dotenv.config.js';
 
 
@@ -32,6 +33,7 @@ app.use('/',viewsRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/products', productsRouter);
 app.use('/api/carts',cartsRouter);
+app.use('/api/sessions', sessionsRouter);
 
 //starting de server
 const server = app.listen(PORT, () => {
