@@ -20,10 +20,10 @@ switch (persistence) {
     //   usersService = new FileUser();
     //   break;
     case "mongodb":
-      const { default: MongoProduct } = await import("./mongoDAO/mongodbProducts.js");
+      const { default: MongoProduct } = await import("./mongoDao/mongodbProducts.js");
       productsService = new MongoProduct();
-    //   const { default: MongoCarts } = await import("./MongoDAO/MongoCarts.js");
-    //   cartsService = new MongoCarts();
+      const { default: MongoCarts } = await import("./mongoDao/mongodbCarts.js");
+      cartsService = new MongoCarts();
       const { default: MongoUser } = await import("./mongoDao/mongodbUsers.js");
       usersService = new MongoUser();
       break;

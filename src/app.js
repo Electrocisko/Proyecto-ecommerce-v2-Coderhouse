@@ -3,6 +3,7 @@ import logger from './config/winston.config.js';
 import __dirname from './helpers/utils.js';
 import viewsRouter from './routes/views.router.js';
 import usersRouter from './routes/users.router.js';
+import cartsRouter from './routes/carts.router.js';
 import productsRouter from './routes/products.router.js';
 import dotenvConfig from './config/dotenv.config.js';
 
@@ -30,6 +31,7 @@ app.use("/", express.static(__dirname + "/public"));
 app.use('/',viewsRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/products', productsRouter);
+app.use('/api/carts', cartsRouter);
 
 //starting de server
 const server = app.listen(PORT, () => {
