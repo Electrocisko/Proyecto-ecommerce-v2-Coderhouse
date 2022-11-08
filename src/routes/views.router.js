@@ -8,4 +8,12 @@ router.get('/',async (req,res) => {
     res.render('pages/index.ejs')
 });
 
+router.get('/register', async (req,res) => {
+    res.render('pages/register.ejs')
+});
+
+router.get('/login', (req,res) => {
+    res.render('pages/login.ejs')
+})
+
 export default router;
