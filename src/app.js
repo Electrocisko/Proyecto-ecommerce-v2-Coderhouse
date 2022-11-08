@@ -7,7 +7,9 @@ import cartsRouter from './routes/carts.router.js';
 import productsRouter from './routes/products.router.js';
 import sessionsRouter from './routes/sessions.router.js';
 import dotenvConfig from './config/dotenv.config.js';
-
+import cookieParser from "cookie-parser";
+import initializePassport from './config/passport.config.js';
+import passport from 'passport';
 
 //initializations
 const app = express();
@@ -16,7 +18,6 @@ const HOST = dotenvConfig.app.HOST || '127.0.0.1'
 
 logger.log('debug',`Dirname en app : ${__dirname}`)
 
-
 // Template config engine
 app.set('views',__dirname+'/views');
 app.set('view engine', 'ejs');
@@ -24,6 +25,9 @@ app.set('view engine', 'ejs');
 // middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+initializePassport();
+app.use(passport.initialize());
 
 //static files
 app.use("/", express.static(__dirname + "/public"));
