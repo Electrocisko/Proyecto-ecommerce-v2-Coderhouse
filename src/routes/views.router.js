@@ -1,19 +1,14 @@
 import { Router } from 'express';
-import logger from '../config/winston.config.js';
+import { viewLoginController, viewMenuController, viewRegisterController, viewIndexController } from '../controllers/views.controllers.js';
 
 const router = new Router();
 
-router.get('/',async (req,res) => {
-    logger.log('info',`request type ${req.method} en route ${req.path} ${new Date()}`)
-    res.render('pages/index.ejs')
-});
+router.get('/', viewIndexController );
 
-router.get('/register', async (req,res) => {
-    res.render('pages/register.ejs')
-});
+router.get('/register', viewRegisterController);
 
-router.get('/login', (req,res) => {
-    res.render('pages/login.ejs')
-})
+router.get('/login', viewLoginController);
+
+router.get('/menu',viewMenuController );
 
 export default router;

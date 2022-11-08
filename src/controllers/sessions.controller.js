@@ -19,10 +19,9 @@ const loginController = async (req, res) => {
     cart: req.user.cart,
   };
   const token = jwt.sign(loginUser, dotenvConfig.jwt.SECRET, {
-    expiresIn: 60000,
+    expiresIn: 600,
   });
-
-  res.cookie(dotenvConfig.jwt.COOKIE, token, { maxAge: 60000, httpOnly:true }).send(req.user);
+  res.cookie(dotenvConfig.jwt.COOKIE, token, { maxAge: 600000, httpOnly:true }).send(req.user);
 };
 
 export { registerController, loginController };
