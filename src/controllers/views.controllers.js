@@ -1,6 +1,13 @@
 import logger from "../config/winston.config.js";
 import dotenvConfig from "../config/dotenv.config.js";
 import jwt from "jsonwebtoken";
+import {
+    getAllProducts,
+    saveProducts,
+    getProductById,
+    deleteProductById,
+    updateProduct,
+  } from "../services/products.services.js";
 
 const viewMenuController = async (req, res) => {
   logger.log(
@@ -10,8 +17,9 @@ const viewMenuController = async (req, res) => {
   const token = req.cookies[dotenvConfig.jwt.COOKIE];
   if (!token) return res.redirect("/login");
   const user = jwt.verify(token, dotenvConfig.jwt.SECRET);
+  let products = await getAllProducts();
   logger.log("debug", `Cookie JWT user: ${user}`);
-  res.render("pages/menu.ejs",{user});
+  res.render("pages/menu.ejs",{user, products});
 };
 
 const viewLoginController = async (req, res) => {
