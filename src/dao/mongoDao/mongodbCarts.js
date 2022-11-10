@@ -45,8 +45,3 @@ export default class MongoCarts extends MongoDBcontainer {
 }
 }
 
-export default class MongoCarts extends MongoDBcontainer{
-    constructor(){
-        super(collection,cartsSchema);
-    }
-}
