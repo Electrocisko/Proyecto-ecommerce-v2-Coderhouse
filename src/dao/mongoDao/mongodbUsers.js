@@ -1,24 +1,19 @@
-import mongoose from "mongoose";
 import MongoDBcontainer from "./mongodbContainer.js";
+import { collection, usersSchema} from '../models/user.model.js';
+import logger from "../../config/winston.config.js";
 
-const collection = 'users';
-
-const usersSchema = mongoose.Schema({
-    name: { type: String, required: true },
-    email: { type: String, required: true },
-    password: { type: String, required: true },
-    address: { type: String, required: true },
-    age: { type: Number, required: true },
-    phoneNumber: { type: String, required: true },
-    imageUrl: { type: String },
-    admin:{
-      type:Boolean,
-      default:false
-  },
-  });
 
   export default class MongoUsers extends MongoDBcontainer {
     constructor() {
         super(collection, usersSchema)
     }
+
+    getByMail = async (mail) => {
+      try {
+        let result = await this.model.findOne({ email: mail });
+        return result;
+      } catch (error) {
+        logger.log("error", `Error dao user getByMail  ${error}`);
+      }
+    };
   }
