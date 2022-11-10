@@ -16,3 +16,5 @@
 [2022-11-07T18:48:01.115Z] error Error mongodb save  ValidationError: phoneNumber: Path `phoneNumber` is required., age: Path `age` is required., password: Path `password` is required.
 [2022-11-08T10:44:18.985Z] error Error mongodb save  ValidationError: phoneNumber: Path `phoneNumber` is required., age: Path `age` is required., address: Path `address` is required., name: Path `name` is required.
 [2022-11-08T10:45:36.157Z] error Error mongodb save  ValidationError: phoneNumber: Path `phoneNumber` is required., age: Path `age` is required., address: Path `address` is required., name: Path `name` is required.
+[2022-11-09T12:13:51.286Z] error Error mongodb update CastError: Cast to embedded failed for value "{ quantity: NaN }" (type Object) at path "products" because of "CastError"
+[2022-11-09T13:53:32.268Z] error Error in carts.services update by IDMongoServerError: BSON field 'distinct.key' is the wrong type 'object', expected type 'string'

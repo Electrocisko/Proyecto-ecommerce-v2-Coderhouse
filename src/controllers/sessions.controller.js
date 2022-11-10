@@ -24,4 +24,12 @@ const loginController = async (req, res) => {
   res.cookie(dotenvConfig.jwt.COOKIE, token, { maxAge: 600000, httpOnly:true }).send(req.user);
 };
 
-export { registerController, loginController };
+const logoutController = async (req,res) => {
+  try {
+    res.clearCookie(dotenvConfig.jwt.COOKIE).redirect("/login");
+  } catch (error) {
+    logger.log("error", `logout error: ${error}`);
+  }
+};
+
+export { registerController, loginController, logoutController };

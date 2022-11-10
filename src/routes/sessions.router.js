@@ -2,6 +2,7 @@ import { Router } from "express";
 import {
   registerController,
   loginController,
+  logoutController
 } from "../controllers/sessions.controller.js";
 import upLoader from "../helpers/storageImg.js";
 import passport from "passport";
@@ -27,5 +28,9 @@ router.post(
   }),
   loginController
 );
+
+router.get("/logout", logoutController);
+
+
 
 export default router;
