@@ -24,10 +24,10 @@ export default class MongoCarts extends MongoDBcontainer {
   };
 
   getByIdAndPopulate = async (id) => {
-    let result = await this.model
-      .find({ _id: id })
-      //.lean()
-      //.populate("products");
+    let result = await this.model.find({ _id: id }).populate("products.product").lean()
+
+    console.log(JSON.stringify(result))
+
     return result;
   };
 

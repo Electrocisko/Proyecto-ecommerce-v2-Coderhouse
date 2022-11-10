@@ -1,3 +1,8 @@
+import services from "../dao/index.js";
+
+
+
+/////////////////////////////////////////
 import logger from "../config/winston.config.js";
 import {
   getAllCarts,
@@ -35,7 +40,14 @@ const deleteCartByIdControler = async (req, res) => {
 
 const getProductsInCartController = async (req, res) => {
   let cid = req.params.cid;
-  let result = await getPopulateCart(cid);
+///////////////////////
+
+let result  = await services.cartsService.getByIdAndPopulate(cid);
+
+
+
+///////////////////////////////
+  //let result = await getPopulateCart(cid);
   logger.log("debug", `Que devuelve populate: ${JSON.stringify(result)}`);
   return res.send(result);
 };
