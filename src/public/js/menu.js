@@ -8,7 +8,7 @@ eventList.forEach( (element) => {
         e.preventDefault()
         let prodID = element.value;
         fetch(url,{
-            method: "POST",
+            method: "PUT",
             body: JSON.stringify({
               product: prodID,
             }),
@@ -18,7 +18,16 @@ eventList.forEach( (element) => {
           })
           .then((response) => response.json()
           )
-          .then((data) => console.log(data))
+          .then(() => {
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Agregado al carrito',
+              showConfirmButton: false,
+              timer: 1000
+            })
+          }
+          )
     })  
 }
 
