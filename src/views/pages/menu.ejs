@@ -29,11 +29,11 @@
 
       <h1>Lista de productos</h1>
 
-      <div class="container">
-        <div class="d-inline-flex p-2">
+      <div >
+       <div class='d-flex justify-content-center flex-wrap'>
           <% products.forEach(function(product){ %> <%-
           include('../partials/card.ejs', {product: product}); %> <% }); %>
-        </div>
+       </div>
       </div>
     </main>
 
