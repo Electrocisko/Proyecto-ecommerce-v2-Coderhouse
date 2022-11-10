@@ -41,9 +41,9 @@ const deleteCartById = async (id) => {
     }
 };
 
-const updateCart = async (id,newData) => {
+const updateCart = async (cartID,newData) => {
     try {
-        let result = await services.cartsService.update(id,newData);
+        let result = await services.cartsService.update(cartID,newData);
         return result
     } catch (error) {
         logger.log('error',`Error in carts.services update by ID${error}`)

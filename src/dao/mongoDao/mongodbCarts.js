@@ -36,8 +36,8 @@ export default class MongoCarts extends MongoDBcontainer {
     return result;
   };
 
-  update = async (id,cart) =>{
-   let result = await this.model.findByIdAndUpdate(id,{$set:{products:cart.products}})
+  update = async (cartID,newData) =>{
+   let result = await cartsService.findByIdAndUpdate(cartID, newData)
 
 
   logger.log('debug',`update cart ${JSON.stringify(result)}`)
