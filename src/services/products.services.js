@@ -22,9 +22,7 @@ const saveProducts = async (data) => {
 const getProductById = async (id) => {
     try {
         let product = await services.productsService.getById(id);
-        if (product !== null) {return product}
-        else { return {message: '"non existent product"'}}
-
+        return product
     } catch (error) {
         logger.log('error',`Error in products.services get by ID${error}`)
     }

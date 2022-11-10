@@ -40,7 +40,7 @@ export default class MongoDBcontainer {
           if (!ObjectId.isValid(id)) {
             return null;
           }
-          let result = await this.model.find({ _id: id });
+          let result = await this.model.findOne({ _id: id });
           if (Object.keys(result).length === 0) {
             return null;
           }

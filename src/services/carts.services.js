@@ -23,9 +23,7 @@ const saveCart = async () => {
 const getCartById = async (id) => {
     try {
         let cart = await services.cartsService.getById(id);
-        if (cart !== null) {return cart}
-        else { return {message: '"non existent cart"'}}
-
+        return cart;
     } catch (error) {
         logger.log('error',`Error in carts.services get by ID${error}`)
     }

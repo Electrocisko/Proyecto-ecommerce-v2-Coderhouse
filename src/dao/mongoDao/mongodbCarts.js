@@ -13,7 +13,7 @@ export default class MongoCarts extends MongoDBcontainer {
       if (!ObjectId.isValid(id)) {
         return null;
       }
-      let result = await this.model.find({ _id: id }).lean();
+      let result = await this.model.findOne({ _id: id }).lean();
       if (Object.keys(result).length === 0) {
         return null;
       }
@@ -35,13 +35,5 @@ export default class MongoCarts extends MongoDBcontainer {
     let result = await this.model.create({ products: [] });
     return result;
   };
-
-  update = async (cartID,newData) =>{
-   let result = await cartsService.findByIdAndUpdate(cartID, newData)
-
-
-  logger.log('debug',`update cart ${JSON.stringify(result)}`)
-   return result
-}
 }
 
