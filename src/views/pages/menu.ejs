@@ -15,10 +15,13 @@
           <h3>
             Welcome <%= user.name %>
         
-          <a href="/api/sessions/logout" alt="Avatar">
+          <a href="/api/sessions/logout" >
             <input type=" button" class="btn btn-primary btn-sm" value="Cerrar Sesión">
           </a>
           </h3>
+          <a href="/cart" >
+            <input type=" button" class="btn btn-primary btn-sm" value="Ver carrito">
+          </a>
           <p id="cartId" hidden><%= user.cart %></p>
         </div>
         <hr />

@@ -21,3 +21,5 @@
 [2022-11-10T18:31:02.018Z] error Error mongodb getById  TypeError: Cannot convert undefined or null to object
 [2022-11-10T18:49:28.484Z] error Error in carts.services update by IDReferenceError: cartsService is not defined
 [2022-11-10T18:58:45.139Z] error Error in carts.services update by IDReferenceError: cartsService is not defined
+[2022-11-10T19:52:40.600Z] error Error in carts.services get populate by IDCastError: Cast to ObjectId failed for value ":cid" (type string) at path "_id" for model "carts"
+[2022-11-10T19:53:30.376Z] error Error in carts.services get populate by IDCastError: Cast to ObjectId failed for value ":cid" (type string) at path "_id" for model "carts"

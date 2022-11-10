@@ -46,9 +46,18 @@ const viewIndexController = async (req, res) => {
   res.render("pages/index.ejs");
 };
 
+const viewCartController = async (req,res) => {
+  const token = req.cookies[dotenvConfig.jwt.COOKIE];
+  if (!token) return res.redirect("/login");
+  const user = jwt.verify(token, dotenvConfig.jwt.SECRET);
+  console.log(user)
+  res.render('pages/cart.ejs',{user})
+}
+
 export {
   viewLoginController,
   viewMenuController,
   viewRegisterController,
   viewIndexController,
+  viewCartController
 };
