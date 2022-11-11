@@ -24,7 +24,7 @@ export default class MongoCarts extends MongoDBcontainer {
   };
 
   getByIdAndPopulate = async (id) => {
-    let result = await this.model.find({ _id: id }).populate("products.product").lean()
+    let result = await this.model.find({ _id: id }).populate("products.product")
 
     console.log(JSON.stringify(result))
 

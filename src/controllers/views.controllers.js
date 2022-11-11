@@ -1,13 +1,8 @@
 import logger from "../config/winston.config.js";
 import dotenvConfig from "../config/dotenv.config.js";
 import jwt from "jsonwebtoken";
-import {
-    getAllProducts,
-    saveProducts,
-    getProductById,
-    deleteProductById,
-    updateProduct,
-  } from "../services/products.services.js";
+import { getAllProducts } from "../services/products.services.js";
+import services from "../dao/index.js";
 
 const viewMenuController = async (req, res) => {
   logger.log(
@@ -19,7 +14,7 @@ const viewMenuController = async (req, res) => {
   const user = jwt.verify(token, dotenvConfig.jwt.SECRET);
   let products = await getAllProducts();
   logger.log("debug", `Cookie JWT user: ${user}`);
-  res.render("pages/menu.ejs",{user, products});
+  res.render("pages/menu.ejs", { user, products });
 };
 
 const viewLoginController = async (req, res) => {
@@ -46,18 +41,18 @@ const viewIndexController = async (req, res) => {
   res.render("pages/index.ejs");
 };
 
-const viewCartController = async (req,res) => {
+const viewCartController = async (req, res) => {
   const token = req.cookies[dotenvConfig.jwt.COOKIE];
   if (!token) return res.redirect("/login");
   const user = jwt.verify(token, dotenvConfig.jwt.SECRET);
-  console.log(user)
-  res.render('pages/cart.ejs',{user})
-}
+  let cart = await services.cartsService.getByIdAndPopulate(user.cart);
+  res.render("pages/cart.ejs", { user, products });
+};
 
 export {
   viewLoginController,
   viewMenuController,
   viewRegisterController,
   viewIndexController,
-  viewCartController
+  viewCartController,
 };
