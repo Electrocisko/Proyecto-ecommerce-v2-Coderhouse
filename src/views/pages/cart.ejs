@@ -11,16 +11,7 @@
         <h1>CART de <%= user.name %> </h1>
         <h3>Carrito del usuario <span><%= user.cart %></span></h3>
        
-    
-       <ul>
-        <% products.forEach(function(product) { %>
-           <li><%= product.product.name %>,  Cantidad: <%= product.quantity %> Sub-total: $ <%= (product.product.price * product.quantity)  %> </li>
-        <% }); %> 
-       </ul>
-
-
-
-
+  
 
     </main>
 
