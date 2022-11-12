@@ -47,6 +47,12 @@ const viewCartController = async (req,res) => {
   const user = jwt.verify(token, dotenvConfig.jwt.SECRET);
   let cart = await services.cartsService.getByIdAndPopulate(user.cart)
   let products = cart[0].products;
+
+  console.log('PRODUCTS', products);
+
+
+
+
   res.render('pages/cart.ejs',{user, products})
 };
 

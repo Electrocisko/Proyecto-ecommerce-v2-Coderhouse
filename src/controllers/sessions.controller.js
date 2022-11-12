@@ -10,7 +10,6 @@ const registerController = async (req, res) => {
 };
 
 const loginController = async (req, res) => {
-  logger.log("debug", `req user en login controller ${req.user}`);
   const loginUser = {
     role: req.user.role,
     email: req.user.email,

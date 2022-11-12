@@ -39,7 +39,6 @@ const deleteCartByIdControler = async (req, res) => {
 const getProductsInCartController = async (req, res) => {
   let cid = req.params.cid;
   let result = await services.cartsService.getByIdAndPopulate(cid);
-  logger.log("debug", `Que devuelve populate: ${JSON.stringify(result)}`);
   return res.send(result);
 };
 

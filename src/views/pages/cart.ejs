@@ -11,7 +11,9 @@
         <h1>CART de <%= user.name %> </h1>
         <h3>Carrito del usuario <span><%= user.cart %></span></h3>
        
-  
+        <% products.forEach(product => { %> 
+          <p class="precios"  ><%= product.product.name %></p>
+    <% }) %>
 
     </main>
 
