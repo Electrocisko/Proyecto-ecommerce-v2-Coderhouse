@@ -13,7 +13,6 @@ const viewMenuController = async (req, res) => {
   if (!token) return res.redirect("/login");
   const user = jwt.verify(token, dotenvConfig.jwt.SECRET);
   let products = await getAllProducts();
-  logger.log("debug", `Cookie JWT user: ${user}`);
   res.render("pages/menu.ejs",{user, products});
 };
 
@@ -47,15 +46,8 @@ const viewCartController = async (req,res) => {
   const user = jwt.verify(token, dotenvConfig.jwt.SECRET);
   let cart = await services.cartsService.getByIdAndPopulate(user.cart)
   let products = cart[0].products;
-
-  console.log('PRODUCTS', products);
-
-
-
-
   res.render('pages/cart.ejs',{user, products})
 };
-
 
 export {
   viewLoginController,

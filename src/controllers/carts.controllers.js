@@ -80,6 +80,14 @@ const addProductInCartContoller = async (req, res) => {
   return res.send(result);
 };
 
+const deletteAllProductsInCartController = async (req, res) => {
+  let cartID = req.params.cid;
+  let newData = { products: [] }
+  let result =  await updateCart(cartID, newData);
+  return res.send(result);
+};
+
+
 export {
   getCartsController,
   postCartsController,
@@ -87,4 +95,5 @@ export {
   deleteCartByIdControler,
   getProductsInCartController,
   addProductInCartContoller,
+  deletteAllProductsInCartController
 };

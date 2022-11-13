@@ -7,7 +7,7 @@ let logLevel = 'debug'
 const logger = winston.createLogger({
     format: combine(
         simple(),
-        timestamp(),
+        timestamp({format: 'YYYY-MM-DD HH:mm:ss'}),
         printf( info => `[${info.timestamp}] ${info.level} ${info.message}`)
         ),
     transports:[
