@@ -26,3 +26,4 @@
 [2022-11-13T10:35:12.715Z] error Error mongodb getById  TypeError: Cannot convert undefined or null to object
 [2022-11-13T10:48:51.294Z] error Error mongodb getById  TypeError: Cannot convert undefined or null to object
 [2022-11-13 08:03:19] error Error mongodb getById  TypeError: Cannot convert undefined or null to object
+[2022-11-13 09:52:24] error Error mongodb update TypeError: Cannot read properties of undefined (reading 'updateOne')

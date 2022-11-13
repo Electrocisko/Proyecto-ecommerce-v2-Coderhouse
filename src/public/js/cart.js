@@ -36,12 +36,37 @@ let addProduct = (prodID,cartId) => {
 
 let emptyCart = (cartId) => {
     let url = `/api/carts/${cartId}`;
-    fetch(url, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: null 
+    Swal.fire({
+        title: 'Esta seguro?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ok, vaciar carrito'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(
+            'Borrado!',
+            'Tu carrito se ha vaciado.'
+          )
+          fetch(url, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: null 
+          })
+        .then( window.history.back())
+        }
       })
-    .then( window.history.back())
+
+
+
+
+
+
+
+
+  
+  
 }
