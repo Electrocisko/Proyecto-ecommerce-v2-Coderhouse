@@ -67,6 +67,14 @@ const viewErrorRegisterController = async(req,res) => {
   );
   let message = 'REGISTER ERROR'
   res.render("pages/errorRegister.ejs",{message});
+};
+
+const viewEnterProductController = async (req, res) => {
+  logger.log(
+    "info",
+    `request type ${req.method} en route ${req.path} ${new Date()}`
+  );
+  res.render("pages/enterProduct.ejs");
 }
 
 
@@ -81,5 +89,6 @@ export {
   viewIndexController,
   viewCartController,
   viewErrorLoginController,
-  viewErrorRegisterController
+  viewErrorRegisterController,
+  viewEnterProductController
 };

@@ -2,7 +2,9 @@ import { Router } from "express";
 import {
   registerController,
   loginController,
-  logoutController
+  logoutController,
+  loginFailControler,
+  registerFailControler
 } from "../controllers/sessions.controller.js";
 import upLoader from "../helpers/storageImg.js";
 import passport from "passport";
@@ -31,13 +33,8 @@ router.post(
 
 router.get("/logout", logoutController);
 
-router.get("/loginfail", (req, res) => {
-  res.status(400).send({ status: "error", message: "user registration error" });
-});
+router.get("/loginfail",loginFailControler );
 
-router.get("/registerfail", (req, res) => {
-  res.status(400).send({ status: "error", message: "user registration error" });
-});
-
+router.get("/registerfail", registerFailControler );
 
 export default router;

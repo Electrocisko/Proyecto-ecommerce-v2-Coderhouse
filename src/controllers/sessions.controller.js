@@ -26,4 +26,14 @@ const logoutController = async (req,res) => {
   }
 };
 
-export { registerController, loginController, logoutController };
+const loginFailControler = async (req,res) => {
+    res.status(400).send({ status: "error", message: "user registration error" });;
+};
+
+const registerFailControler = async (req, res) => {
+  res.status(400).send({ status: "error", message: "user registration error" });
+};
+
+
+
+export { registerController, loginController, logoutController, loginFailControler,registerFailControler };
