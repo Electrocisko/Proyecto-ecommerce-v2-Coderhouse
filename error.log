@@ -1,3 +1,28 @@
 
 [2022-11-13 08:03:19] error Error mongodb getById  TypeError: Cannot convert undefined or null to object
 [2022-11-13 09:52:24] error Error mongodb update TypeError: Cannot read properties of undefined (reading 'updateOne')
+[2022-11-14 16:14:07] error Error in mongoose connect Error: Error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.rvl2uyz.mongodb.net
+[2022-11-14 16:14:07] error Error in mongoose connect Error: Error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.rvl2uyz.mongodb.net
+[2022-11-14 16:14:07] error Error in mongoose connect Error: Error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.rvl2uyz.mongodb.net
+[2022-11-14 16:19:02] error Error dao user getByMail  TypeError: Cannot read properties of undefined (reading 'findOne')
+[2022-11-14 16:19:02] error Error in carts.services save TypeError: Cannot read properties of undefined (reading 'create')
+[2022-11-14 16:19:57] error Error in mongoose connect Error: Error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.rvl2uyz.mongodb.net
+[2022-11-14 16:19:57] error Error in mongoose connect Error: Error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.rvl2uyz.mongodb.net
+[2022-11-14 16:19:57] error Error in mongoose connect Error: Error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.rvl2uyz.mongodb.net
+[2022-11-14 16:21:12] error Error in mongoose connect Error: Error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.rvl2uyz.mongodb.net
+[2022-11-14 16:21:13] error Error in mongoose connect Error: Error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.rvl2uyz.mongodb.net
+[2022-11-14 16:21:13] error Error in mongoose connect Error: Error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.rvl2uyz.mongodb.net
+[2022-11-14 16:22:05] error Error in mongoose connect Error: Error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.rvl2uyz.mongodb.net
+[2022-11-14 16:22:05] error Error in mongoose connect Error: Error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.rvl2uyz.mongodb.net
+[2022-11-14 16:22:06] error Error in mongoose connect Error: Error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.rvl2uyz.mongodb.net
+[2022-11-14 16:26:20] error Error in mongoose connect Error: Error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.rvl2uyz.mongodb.net
+[2022-11-14 16:26:20] error Error in mongoose connect Error: Error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.rvl2uyz.mongodb.net
+[2022-11-14 16:26:20] error Error in mongoose connect Error: Error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.rvl2uyz.mongodb.net
+[2022-11-14 16:27:31] error Error in mongoose connect Error: Error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.rvl2uyz.mongodb.net
+[2022-11-14 16:27:31] error Error in mongoose connect Error: Error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.rvl2uyz.mongodb.net
+[2022-11-14 16:27:31] error Error in mongoose connect Error: Error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.rvl2uyz.mongodb.net
+[2022-11-14 16:29:28] error Error in mongoose connect Error: Error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.rvl2uyz.mongodb.net
+[2022-11-14 16:29:28] error Error in mongoose connect Error: Error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.rvl2uyz.mongodb.net
+[2022-11-14 16:29:28] error Error in mongoose connect Error: Error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.rvl2uyz.mongodb.net
+[2022-11-14 16:29:42] error Error dao user getByMail  TypeError: Cannot read properties of undefined (reading 'findOne')
+[2022-11-14 16:29:42] error Error in carts.services save TypeError: Cannot read properties of undefined (reading 'create')

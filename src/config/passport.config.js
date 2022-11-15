@@ -17,11 +17,12 @@ const initializePassport = () => {
           session: false,
         },
         async (req, email, password, done) => {
-          const { name, address, age, phoneNumber } = req.body;
-          if (!name || !email || !address || !password || !age || !phoneNumber)
-            return res.send({ message: "incomplete data" });
+          const { name, address, age, phoneNumber, passwordCheck } = req.body;
+          if (!name || !email || !address || !password || !age || !phoneNumber || !passwordCheck)
+            return done(null,false);
+          if (password !== passwordCheck) return done(null,false);
           let exist = await getUserByEmail(email);
-          if (exist) return res.send({ message: "already registered user" });
+          if (exist) return done(null,false);
           const hashedPassword = await createHash(password);
           let image = req.file.filename;
           const cart = await saveCart();

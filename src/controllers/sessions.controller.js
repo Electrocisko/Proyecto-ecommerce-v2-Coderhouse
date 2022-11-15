@@ -1,6 +1,7 @@
 import logger from "../config/winston.config.js";
 import jwt from "jsonwebtoken";
 import dotenvConfig from "../config/dotenv.config.js";
+import UserDtoPresenter from "../dto/userDTO.js";
 
 const registerController = async (req, res) => {
   res.send({
@@ -10,13 +11,7 @@ const registerController = async (req, res) => {
 };
 
 const loginController = async (req, res) => {
-  const loginUser = {
-    role: req.user.role,
-    email: req.user.email,
-    name: req.user.name,
-    imageUrl: req.user.imageUrl,
-    cart: req.user.cart,
-  };
+ const loginUser = UserDtoPresenter(req.user)
   const token = jwt.sign(loginUser, dotenvConfig.jwt.SECRET, {
     expiresIn: 600,
   });

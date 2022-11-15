@@ -2,7 +2,7 @@ const form = document.getElementById("registerForm");
 
 const succes = (data) => {
   if (data.status === "error") {
-    window.location.assign("/");
+    window.location.assign("/errorregister");
   } else {
     window.location.assign("/login");
   }

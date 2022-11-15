@@ -4,7 +4,9 @@ import {
   viewMenuController,
   viewRegisterController,
   viewIndexController,
-  viewCartController
+  viewCartController,
+  viewErrorLoginController,
+  viewErrorRegisterController
 } from "../controllers/views.controllers.js";
 
 const router = new Router();
@@ -18,5 +20,9 @@ router.get("/login", viewLoginController);
 router.get("/menu", viewMenuController);
 
 router.get("/cart", viewCartController);
+
+router.get('/errorlogin', viewErrorLoginController);
+
+router.get('/errorregister', viewErrorRegisterController)
 
 export default router;

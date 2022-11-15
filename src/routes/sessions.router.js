@@ -14,7 +14,7 @@ router.post(
   upLoader.single("imageUrl"),
   passport.authenticate("register", {
     session: false,
-    failureRedirect: "/",
+    failureRedirect: "/api/sessions/registerfail",
     passReqToCallback: true,
   }),
   registerController
@@ -24,13 +24,20 @@ router.post(
   "/login",
   passport.authenticate("login", {
     session: false,
-    failureRedirect: "/",
+    failureRedirect: "/api/sessions/loginfail",
   }),
   loginController
 );
 
 router.get("/logout", logoutController);
 
+router.get("/loginfail", (req, res) => {
+  res.status(400).send({ status: "error", message: "user registration error" });
+});
+
+router.get("/registerfail", (req, res) => {
+  res.status(400).send({ status: "error", message: "user registration error" });
+});
 
 
 export default router;
