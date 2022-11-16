@@ -77,7 +77,13 @@ const viewEnterProductController = async (req, res) => {
   res.render("pages/enterProduct.ejs");
 }
 
-
+const viewModifiedProductController = async (req,res) => {
+  logger.log(
+    "info",
+    `request type ${req.method} en route ${req.path} ${new Date()}`
+  );
+  res.render("pages/modifiedProduct.ejs");
+}
 
 
 
@@ -90,5 +96,6 @@ export {
   viewCartController,
   viewErrorLoginController,
   viewErrorRegisterController,
-  viewEnterProductController
+  viewEnterProductController,
+  viewModifiedProductController
 };
