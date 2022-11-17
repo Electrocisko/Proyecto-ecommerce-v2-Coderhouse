@@ -2,9 +2,11 @@ let array = document.getElementsByClassName("precios");
 let totalPrice = document.createElement("p");
 let sendMail = document.getElementById("sendMail");
 let total = document.getElementById('total-price');
-let orderToSend = document.getElementById('order')
+let orderToSend = document.getElementById('order');
+let cartId = document.getElementById('cartId').textContent;
+let userMail = document.getElementById('email').textContent;
 
-let sum = 0;
+let sum = 0
 
 for (let index = 0; index < array.length; index++) {
   const element = array[index];
@@ -20,8 +22,8 @@ totalPrice.innerHTML = `<h3> Precio Total : ${currency} Pesos `;
 
 total.append(totalPrice);
 
-let emptyCart = (cartId) => {
-  let url = `/api/carts/${cartId}`;
+let emptyCart = (id) => {
+  let url = `/api/carts/${id}`;
   Swal.fire({
     title: "Esta seguro?",
     icon: "warning",
@@ -44,7 +46,7 @@ let emptyCart = (cartId) => {
 };
 
 sendMail.addEventListener("click", (evt) => {
-  let data = {message: orderToSend.innerHTML};
+  let data = {message: orderToSend.innerHTML, cartId, userMail};
   let url = "/api/messages/mail";
   Swal.fire('Orden enviado');
   handleSubmit(url,data);

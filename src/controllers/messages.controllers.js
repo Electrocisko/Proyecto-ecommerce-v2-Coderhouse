@@ -1,6 +1,5 @@
 import nodemailer from 'nodemailer';
 
-
 const transporter = nodemailer.createTransport({
     host: 'smtp.ethereal.email',
     port: 587,
@@ -10,9 +9,8 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-
 const mailController =  async (req,res) => {
-    let {message} = req.body;
+    let {message, cartId, userMail } = req.body;
     let messagePlus = `<br>
                         <p>Estimado Cliente, Gracias por su compra, su orden esta en proceso en breve nos contactaremos con usted para coordinar pago y entrega</p>
                         <br>
@@ -21,8 +19,8 @@ const mailController =  async (req,res) => {
                         Saludos Cordiales`
     let result = await transporter.sendMail({
         from: 'Ecommerce-Coderhouse',
-        to: 'electrocisko@gmail.com',
-        subject: "Mail info",
+        to: userMail,
+        subject: `Orden de compra Nr ${cartId}`,
         html: messagePlus
     })
     res.send({message: 'Email sent'})
