@@ -20,8 +20,6 @@ totalPrice.innerHTML = `<h3> Precio Total : ${currency} Pesos `;
 
 total.append(totalPrice);
 
-
-
 let emptyCart = (cartId) => {
   let url = `/api/carts/${cartId}`;
   Swal.fire({
