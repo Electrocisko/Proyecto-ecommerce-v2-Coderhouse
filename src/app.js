@@ -6,6 +6,7 @@ import usersRouter from './routes/users.router.js';
 import cartsRouter from './routes/carts.router.js';
 import productsRouter from './routes/products.router.js';
 import sessionsRouter from './routes/sessions.router.js';
+import messagesRouter from './routes/messages.router.js';
 import dotenvConfig from './config/dotenv.config.js';
 import cookieParser from "cookie-parser";
 import initializePassport from './config/passport.config.js';
@@ -36,8 +37,9 @@ app.use("/", express.static(__dirname + "/public"));
 app.use('/',viewsRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/products', productsRouter);
-app.use('/api/carts',cartsRouter);
+app.use('/api/carts', cartsRouter);
 app.use('/api/sessions', sessionsRouter);
+app.use('/api/messages', messagesRouter);
 
 //starting de server
 const server = app.listen(PORT, () => {
