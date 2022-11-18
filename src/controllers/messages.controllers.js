@@ -6,11 +6,6 @@ let email = dotenvConfig.nodemail.NM_EMAIL;
 let code = dotenvConfig.nodemail.NM_CODE;
 let addressee = dotenvConfig.nodemail.NM_ADDRESSEE;
 
-
-console.log(email);
-
-console.log(code);
-
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     port: 587,

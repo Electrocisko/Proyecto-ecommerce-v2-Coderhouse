@@ -9,11 +9,7 @@ import logger from "../../config/winston.config.js";
     }
 
     getByMail = async (mail) => {
-      try {
         let result = await this.model.findOne({ email: mail });
         return result;
-      } catch (error) {
-        logger.log("error", `Error dao user getByMail  ${error}`);
-      }
     };
   }

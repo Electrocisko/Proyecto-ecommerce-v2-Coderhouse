@@ -18,25 +18,16 @@ export default class MongoDBcontainer {
     }
 
     getAll = async () => {
-        try {
           let result = await this.model.find();
           return result;
-        } catch (error) {
-          logger.log("error", `Error mongodb getAll  ${error}`);
-        }
       };
 
       save = async (document) => {
-        try {
           let result = await this.model.create(document);
           return result;
-        } catch (error) {
-          logger.log("error", `Error mongodb save  ${error}`);
-        }
       };
 
       getById = async (id) => {
-        try {
           if (!ObjectId.isValid(id)) {
             return null;
           }
@@ -45,13 +36,9 @@ export default class MongoDBcontainer {
             return null;
           }
           return result;
-        } catch (error) {
-          logger.log("error", `Error mongodb getById  ${error}`);
-        }
       };
 
       deleteById = async (id) => {
-        try {
           let result = false;
           if (!ObjectId.isValid(id)) {
             return result;
@@ -59,13 +46,9 @@ export default class MongoDBcontainer {
           let deleted = await this.model.deleteOne({ _id: id });
           deleted.deletedCount === 0 ? (result = false) : (result = true);
           return result;
-        } catch (error) {
-          logger.log("error", `Error mongodb deleteById  ${error}`);
-        }
       };
 
       update = async (id, modifiedProduct) => {
-        try {
         let result = false;
         if (!ObjectId.isValid(id)) {
           return result;
@@ -75,9 +58,6 @@ export default class MongoDBcontainer {
           { $set: modifiedProduct }
         );
         return modi;
-        } catch (error) {
-          logger.log("error", `Error mongodb update ${error}`);
-        }
       };
     
 }
