@@ -49,7 +49,6 @@ const viewCartController = async (req,res) => {
   res.render('pages/cart.ejs',{user, products})
 };
 
-
 const viewErrorLoginController = async (req, res) => {
   logger.log(
     "info",
@@ -58,7 +57,6 @@ const viewErrorLoginController = async (req, res) => {
   let message = 'LOGIN ERROR'
   res.render("pages/errorLogin.ejs",{message});
 };
-
 
 const viewErrorRegisterController = async(req,res) => {
   logger.log(
