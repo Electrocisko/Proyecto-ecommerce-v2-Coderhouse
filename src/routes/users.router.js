@@ -1,11 +1,9 @@
 import { Router } from 'express';
-import {getUsersController , postUsersController, getUserByIdController, putUserContoller } from '../controllers/users.controllers.js'
+import {getUsersController , getUserByIdController, putUserContoller } from '../controllers/users.controllers.js'
 
 const router = new Router();
 
 router.get('/',getUsersController);
-
-router.post('/', postUsersController);
 
 router.get('/:uid', getUserByIdController);
 
