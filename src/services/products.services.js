@@ -1,52 +1,35 @@
-import logger from "../config/winston.config.js";
+
 import services from "../dao/index.js";
 
 const getAllProducts = async () => {
-        let data = await services.productsService.getAll();
-        return data
+  let data = await services.productsService.getAll();
+  return data;
 };
 
 const saveProducts = async (data) => {
-    try {
-        await services.productsService.save(data);
-    return data
-    } catch (error) {
-        logger.log('error',`Error in products.services save ${error}`)
-    } 
+  await services.productsService.save(data);
+  return data;
 };
 
 const getProductById = async (id) => {
-    try {
-        let product = await services.productsService.getById(id);
-        return product
-    } catch (error) {
-        logger.log('error',`Error in products.services get by ID${error}`)
-    }
+  let product = await services.productsService.getById(id);
+  return product;
 };
 
 const deleteProductById = async (id) => {
-    try {
-        let result = await services.productsService.deleteById(id);
-        if (result === false) return { message: 'error in deleting product'}
-        else { return result}
-    } catch (error) {
-        logger.log('error',`Error in products.services delete by ID${error}`)
-    }
+  let result = await services.productsService.deleteById(id);
+  return result;
 };
 
-const updateProduct = async (id,newData) => {
-    try {
-        let result = await services.productsService.update(id,newData);
-        return result
-    } catch (error) {
-        logger.log('error',`Error in products.services update by ID${error}`)
-    }
-}
+const updateProduct = async (id, newData) => {
+  let result = await services.productsService.update(id, newData);
+  return result;
+};
 
 export {
-    getAllProducts,
-    saveProducts,
-    getProductById,
-    deleteProductById,
-    updateProduct
-}
+  getAllProducts,
+  saveProducts,
+  getProductById,
+  deleteProductById,
+  updateProduct,
+};
