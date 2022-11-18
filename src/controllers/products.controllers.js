@@ -1,4 +1,5 @@
 import logger from "../config/winston.config.js";
+import { ObjectId } from "mongodb";
 import {
   getAllProducts,
   saveProducts,
@@ -9,22 +10,35 @@ import {
 
 
 const getProductsController = async (req, res) => {
+try {
   let data = await getAllProducts();
-  return res.json(data);
+  return res.status(200).json(data);
+} catch (error) {
+  logger.log('error',`Error in getProductsController ${error} `)
+  res.status(500).send({error:error, message:'couldnt get products'})
+}
 };
 
 const postProductsController = async (req, res) => {
-  logger.log('debug', `postproduct contoller ${JSON.stringify(req.body)}`)
+try {
+  if(!req.file.filename) return res.status(500).send({status:"error",error:'Error loading image'});
   const data = req.body;
   data.thumbnail = req.file.filename;
+  if(!data.name || !data.description || !data.code || !data.price || !data.stock || !data.thumbnail ) return res.status(400).send({status:"error",error:"incomplete values"});
   await saveProducts(data);
   res.status(201).json(data);
+} catch (error) {
+  logger.log('error',`Error in getProductsController ${error} `)
+  res.status(500).send({error:error, message:'couldnt save products'})
+}
 };
 
 const getProductByIdController = async (req, res) => {
   let pid = req.params.pid;
+  if (!ObjectId.isValid(pid))  return res.status(400).send({status:"error",error:"invalid id"});
   let data = await getProductById(pid);
-  return res.json(data);
+  if (!data)  return res.status(400).send({status:"error",error:"nonexistent product"});
+  return res.status(200).json(data);
 };
 
 const deleteProductByIdControler = async (req, res) => {

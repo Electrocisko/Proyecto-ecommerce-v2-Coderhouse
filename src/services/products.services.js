@@ -2,12 +2,8 @@ import logger from "../config/winston.config.js";
 import services from "../dao/index.js";
 
 const getAllProducts = async () => {
-    try {
         let data = await services.productsService.getAll();
         return data
-    } catch (error) {
-        logger.log('error',`Error in products.services get All ${error}`)
-    }
 };
 
 const saveProducts = async (data) => {
