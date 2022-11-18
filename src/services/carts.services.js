@@ -1,70 +1,40 @@
-import logger from '../config/winston.config.js';
-import services from '../dao/index.js';
-
+import services from "../dao/index.js";
 
 const getAllCarts = async () => {
-    try {
-        let data = await services.cartsService.getAll();
-        return data;
-    } catch (error) {
-        logger.log('error',`Error in Cart services gett All ${error}`)
-    }
+  let data = await services.cartsService.getAll();
+  return data;
 };
 
 const saveCart = async () => {
-    try {
-       let result =  await services.cartsService.saveCart();
-    return result
-    } catch (error) {
-        logger.log('error',`Error in carts.services save ${error}`)
-    } 
+  let result = await services.cartsService.saveCart();
+  return result;
 };
 
 const getCartById = async (id) => {
-    try {
-        let cart = await services.cartsService.getById(id);
-        return cart;
-    } catch (error) {
-        logger.log('error',`Error in carts.services get by ID${error}`)
-    }
+  let cart = await services.cartsService.getById(id);
+  return cart;
 };
 
 const deleteCartById = async (id) => {
-    try {
-        let result = await services.cartsService.deleteById(id);
-        if (result === false) return { message: 'error in deleting cart'}
-        else { return result}
-    } catch (error) {
-        logger.log('error',`Error in carts.services delete by ID${error}`)
-    }
+  let result = await services.cartsService.deleteById(id);
+    return result;
 };
 
-const updateCart = async (cartID,newData) => {
-    try {
-        let result = await services.cartsService.update(cartID,newData);
-        return result
-    } catch (error) {
-        logger.log('error',`Error in carts.services update by ID${error}`)
-    }
+const updateCart = async (cartID, newData) => {
+  let result = await services.cartsService.update(cartID, newData);
+  return result;
 };
 
 const getPopulateCart = async (id) => {
-    try {
-        let result = await services.cartsService.getByIdAndPopulate(id);
-        return result;
-    } catch (error) {
-        logger.log('error',`Error in carts.services get populate by ID${error}`)
-    }
-}
-
-
-
+  let result = await services.cartsService.getByIdAndPopulate(id);
+  return result;
+};
 
 export {
-    getAllCarts,
-    saveCart,
-    getCartById,
-    deleteCartById,
-    updateCart,
-    getPopulateCart
-}
+  getAllCarts,
+  saveCart,
+  getCartById,
+  deleteCartById,
+  updateCart,
+  getPopulateCart,
+};

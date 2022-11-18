@@ -9,13 +9,7 @@ export default class MongoCarts extends MongoDBcontainer {
   }
 
   getById = async (id) => {
-    if (!ObjectId.isValid(id)) {
-      return null;
-    }
     let result = await this.model.findOne({ _id: id }).lean();
-    if (Object.keys(result).length === 0) {
-      return null;
-    }
     return result;
   };
 
