@@ -53,7 +53,8 @@ const initializePassport = () => {
           if (!email || !password) return done(null, false);
           let user = await getUserByEmail(email);
           if (!user) return done(null, false);
-          if (!isValidPassword(user, password)) return done(null, false);
+          let checkPassword = await isValidPassword(user,password);
+          if (!checkPassword) return done(null, false);
           return done(null, user);
         }
       )

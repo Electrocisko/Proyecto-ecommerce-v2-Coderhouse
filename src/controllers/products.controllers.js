@@ -31,8 +31,7 @@ const postProductsController = async (req, res) => {
       !data.description ||
       !data.code ||
       !data.price ||
-      !data.stock ||
-      !data.thumbnail
+      !data.stock 
     )
       return res
         .status(400)
