@@ -4,9 +4,12 @@ import Chai from "chai";
 const expect = Chai.expect;
 const requester = SuperTest("http://localhost:8080");
 
-let randomPrice = Math.random() * 1000;
+let randomPrice =parseInt(Math.random() * 100000000);
+let randomMail = randomPrice.toString()+'@correo.com'
 
-console.log(randomPrice);
+
+
+console.log(randomMail);
 
 describe("Products Testing", () => {
   describe("GETS", () => {
@@ -68,12 +71,19 @@ describe("Session Testing", () => {
   });
   describe("POST", () => {
     it("register a new user", async () => {
-      let user = {
-        email: "noexisto@correo.com",
-        password: "123",
+      let user =   {
+        "name": "Tester",
+        "email": randomMail,
+        "password": "123",
+        "passwordCheck":"123",
+        "address": "Av San Martin 1200 CABA",
+        "age": 22,
+        "phoneNumber": "2345-3455",
+        "imageUrl": "1668343114260-chica (1).png",
       };
-      let response = await requester.post("/api/sessions/login").send(user);
-      expect(response.status).to.be.not.equal(200);
+      let response = await requester.post("/api/sessions/register").send(user);
+      const result = response.body
+      expect(result.payload).to.include.keys('cart')
     });
   });
 });

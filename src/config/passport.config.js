@@ -6,6 +6,8 @@ import { saveUser, getUserByEmail, getUserById } from "../services/users.service
 
 const LocalStrategy = local.Strategy;
 
+let image = 'avatar.png'
+
 const initializePassport = () => {
   try {
     passport.use(
@@ -24,7 +26,7 @@ const initializePassport = () => {
           let exist = await getUserByEmail(email);
           if (exist) return done(null,false);
           const hashedPassword = await createHash(password);
-          let image = req.file.filename;
+          if (req.file) { image = req.file.filename }
           const cart = await saveCart();
           const user = {
             name,
