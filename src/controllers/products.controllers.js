@@ -29,7 +29,7 @@ const postProductsController = async (req, res) => {
     if (
       !data.name ||
       !data.description ||
-      !data.code ||
+      !data.category ||
       !data.price ||
       !data.stock 
     )

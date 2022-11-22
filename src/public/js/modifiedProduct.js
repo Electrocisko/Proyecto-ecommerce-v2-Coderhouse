@@ -3,7 +3,7 @@ let id = document.getElementById("productId");
 let modificar = document.getElementById("modificar");
 let productName = document.getElementById('name');
 let productDescription = document.getElementById('description');
-let productCode = document.getElementById('code');
+let productCategory = document.getElementById('category');
 let productPrice = document.getElementById('price');
 let productStock = document.getElementById('stock');
 let productThumbnail = document.getElementById('thumbnail')
@@ -19,7 +19,7 @@ const getProduct = (id) => {
     .then((data) => {
       productName.value = data.name;
       productDescription.value = data.description;
-      productCode.value = data.code;
+      productCategory.value = data.category;
       productPrice.value = data.price;
       productStock.value = data.stock;
     });
