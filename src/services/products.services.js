@@ -26,10 +26,17 @@ const updateProduct = async (id, newData) => {
   return result;
 };
 
+const getProductsByCategory = async (cat) => {
+  let data = await services.productsService.getByCategory(cat)
+  return data;
+}
+
+
 export {
   getAllProducts,
   saveProducts,
   getProductById,
   deleteProductById,
   updateProduct,
+  getProductsByCategory
 };
