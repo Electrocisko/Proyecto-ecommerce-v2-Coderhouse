@@ -1,15 +1,12 @@
 import SuperTest from "supertest";
 import Chai from "chai";
+import { faker } from '@faker-js/faker';
 
 const expect = Chai.expect;
 const requester = SuperTest("http://localhost:8080");
 
 let randomPrice =parseInt(Math.random() * 100000000);
-let randomMail = randomPrice.toString()+'@correo.com'
-
-
-
-console.log(randomMail);
+let fakerMail = faker.internet.email()
 
 describe("Products Testing", () => {
   describe("GETS", () => {
@@ -38,6 +35,8 @@ describe("Products Testing", () => {
   });
 });
 
+
+
 describe("User Testing", () => {
   describe("GETS", () => {
     it("Return 200", async () => {
@@ -48,7 +47,9 @@ describe("User Testing", () => {
   });
 });
 
-describe("Session Testing", () => {
+
+
+describe("Session Testing register and login", () => {
   describe("POST", () => {
     it("login test with an existing user", async () => {
       let user = {
@@ -70,10 +71,10 @@ describe("Session Testing", () => {
     });
   });
   describe("POST", () => {
-    it("register a new user", async () => {
+    it("register a new user and check if create a cart", async () => {
       let user =   {
         "name": "Tester",
-        "email": randomMail,
+        "email": fakerMail,
         "password": "123",
         "passwordCheck":"123",
         "address": "Av San Martin 1200 CABA",
