@@ -1,7 +1,10 @@
 import logger from "../config/winston.config.js";
 import dotenvConfig from "../config/dotenv.config.js";
 import jwt from "jsonwebtoken";
-import { getAllProducts } from "../services/products.services.js";
+import {
+  getAllProducts,
+  getProductsByCategory,
+} from "../services/products.services.js";
 import services from "../dao/index.js";
 
 const viewMenuController = async (req, res) => {
@@ -12,8 +15,14 @@ const viewMenuController = async (req, res) => {
   const token = req.cookies[dotenvConfig.jwt.COOKIE];
   if (!token) return res.redirect("/login");
   const user = jwt.verify(token, dotenvConfig.jwt.SECRET);
-  let products = await getAllProducts();
-  res.render("pages/menu.ejs",{user, products});
+  let cat = req.query.category;
+  let products;
+  if (!cat) {
+    products = await getAllProducts();
+  } else {
+    products = await getProductsByCategory(cat);
+  }
+  res.render("pages/menu.ejs", { user, products });
 };
 
 const viewLoginController = async (req, res) => {
@@ -40,13 +49,13 @@ const viewIndexController = async (req, res) => {
   res.render("pages/index.ejs");
 };
 
-const viewCartController = async (req,res) => {
+const viewCartController = async (req, res) => {
   const token = req.cookies[dotenvConfig.jwt.COOKIE];
   if (!token) return res.redirect("/login");
   const user = jwt.verify(token, dotenvConfig.jwt.SECRET);
-  let cart = await services.cartsService.getByIdAndPopulate(user.cart)
+  let cart = await services.cartsService.getByIdAndPopulate(user.cart);
   let products = cart[0].products;
-  res.render('pages/cart.ejs',{user, products})
+  res.render("pages/cart.ejs", { user, products });
 };
 
 const viewErrorLoginController = async (req, res) => {
@@ -54,17 +63,17 @@ const viewErrorLoginController = async (req, res) => {
     "info",
     `request type ${req.method} en route ${req.path} ${new Date()}`
   );
-  let message = 'LOGIN ERROR'
-  res.render("pages/errorLogin.ejs",{message});
+  let message = "LOGIN ERROR";
+  res.render("pages/errorLogin.ejs", { message });
 };
 
-const viewErrorRegisterController = async(req,res) => {
+const viewErrorRegisterController = async (req, res) => {
   logger.log(
     "info",
     `request type ${req.method} en route ${req.path} ${new Date()}`
   );
-  let message = 'REGISTER ERROR'
-  res.render("pages/errorRegister.ejs",{message});
+  let message = "REGISTER ERROR";
+  res.render("pages/errorRegister.ejs", { message });
 };
 
 const viewEnterProductController = async (req, res) => {
@@ -73,18 +82,15 @@ const viewEnterProductController = async (req, res) => {
     `request type ${req.method} en route ${req.path} ${new Date()}`
   );
   res.render("pages/enterProduct.ejs");
-}
+};
 
-const viewModifiedProductController = async (req,res) => {
+const viewModifiedProductController = async (req, res) => {
   logger.log(
     "info",
     `request type ${req.method} en route ${req.path} ${new Date()}`
   );
   res.render("pages/modifiedProduct.ejs");
-}
-
-
-
+};
 
 export {
   viewLoginController,
@@ -95,5 +101,5 @@ export {
   viewErrorLoginController,
   viewErrorRegisterController,
   viewEnterProductController,
-  viewModifiedProductController
+  viewModifiedProductController,
 };
