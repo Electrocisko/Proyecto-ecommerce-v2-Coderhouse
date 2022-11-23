@@ -6,6 +6,7 @@ import {
   getProductById,
   deleteProductById,
   updateProduct,
+  getProductsByCategory
 } from "../services/products.services.js";
 
 const getProductsController = async (req, res) => {
@@ -29,7 +30,7 @@ const postProductsController = async (req, res) => {
     if (
       !data.name ||
       !data.description ||
-      !data.code ||
+      !data.category ||
       !data.price ||
       !data.stock 
     )
@@ -104,10 +105,22 @@ const updateProductControler = async (req, res) => {
   }
 };
 
+const getProductsByCategoryController = async (req,res) => {
+  let cat = req.params.cat;
+  let result = await getProductsByCategory(cat);
+  if (result.length === 0)
+  return res
+    .status(400)
+    .send({ status: "error", error: "non-existent product in category or category non-existent" });
+    return res.status(200).json(result);
+}
+
+
 export {
   getProductsController,
   postProductsController,
   getProductByIdController,
   deleteProductByIdControler,
   updateProductControler,
+  getProductsByCategoryController
 };

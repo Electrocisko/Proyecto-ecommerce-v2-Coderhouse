@@ -5,7 +5,8 @@ import {
   postProductsController,
   getProductByIdController,
   deleteProductByIdControler,
-  updateProductControler
+  updateProductControler,
+  getProductsByCategoryController
 } from "../controllers/products.controllers.js";
 import upLoader from '../helpers/storageImg.js';
 
@@ -20,5 +21,8 @@ router.get("/:pid", getProductByIdController);
 router.delete("/:pid", checkAdmin, deleteProductByIdControler);
 
 router.put("/:pid", checkAdmin, upLoader.single('thumbnail'), updateProductControler);
+
+router.get('/categorys/:cat', getProductsByCategoryController);
+
 
 export default router;

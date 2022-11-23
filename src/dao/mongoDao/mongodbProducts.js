@@ -6,4 +6,11 @@ export default class MongoProducts extends MongoDBcontainer {
     constructor() {
         super(collection,productsSchema)
     }
+
+    getByCategory = async (cat) => {
+        let result = await this.model.find({ category: cat });
+        return result;
+    };
+
+
 }
