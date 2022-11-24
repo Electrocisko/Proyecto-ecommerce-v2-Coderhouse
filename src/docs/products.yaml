@@ -1,4 +1,30 @@
 components:
+  requestBodies:
+    newProduct:
+      type: object
+      properties:
+        name:
+          type: String
+          description: Name that uniquely identifies the product
+        description:
+          type: String
+          description: description of the product and its characteristics
+        category:
+          type: String
+          description: category group that the product belongs to
+        price:
+          type: Number
+        stock:
+          type: Number
+        thumbnail:
+          type: String
+          description: the name of the product image file
+      example:
+        name: Product Test 
+        description: dummy product to test
+        category: vajillas
+        price: 22000
+        stock: 10
   schemas:
     Product:
       type: object
@@ -45,4 +71,25 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Product'
+    post:
+      summary: enter a new product in the database
+      tags:
+        - Products
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/requestBodies/newProduct"
+      responses:
+        "201":
+          description: "the product was added successfully"
+        "400":
+          description: "values incomplete"
+        "500":
+          description: "couldnt save products"
+        
+        
+
+
 

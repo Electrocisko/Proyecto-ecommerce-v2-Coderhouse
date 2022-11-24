@@ -6,7 +6,7 @@ import {
   getProductById,
   deleteProductById,
   updateProduct,
-  getProductsByCategory
+  getProductsByCategory,
 } from "../services/products.services.js";
 
 const getProductsController = async (req, res) => {
@@ -20,19 +20,19 @@ const getProductsController = async (req, res) => {
 };
 
 const postProductsController = async (req, res) => {
+  const data = req.body;
   try {
-    if (!req.file.filename)
-      return res
-        .status(500)
-        .send({ status: "error", error: "Error loading image" });
-    const data = req.body;
-    data.thumbnail = req.file.filename;
+    if (!req.file) {
+      data.thumbnail = "noimage2.jpg";
+    } else {
+      data.thumbnail = req.file.filename;
+    }
     if (
       !data.name ||
       !data.description ||
       !data.category ||
       !data.price ||
-      !data.stock 
+      !data.stock
     )
       return res
         .status(400)
@@ -40,7 +40,7 @@ const postProductsController = async (req, res) => {
     await saveProducts(data);
     res.status(201).json(data);
   } catch (error) {
-    logger.log("error", `Error in getProductsController ${error} `);
+    logger.log("error", `Error in PostProductsController ${error} `);
     res.status(500).send({ error: error, message: "couldnt save products" });
   }
 };
@@ -105,16 +105,18 @@ const updateProductControler = async (req, res) => {
   }
 };
 
-const getProductsByCategoryController = async (req,res) => {
+const getProductsByCategoryController = async (req, res) => {
   let cat = req.params.cat;
   let result = await getProductsByCategory(cat);
   if (result.length === 0)
-  return res
-    .status(400)
-    .send({ status: "error", error: "non-existent product in category or category non-existent" });
-    return res.status(200).json(result);
-}
-
+    return res
+      .status(400)
+      .send({
+        status: "error",
+        error: "non-existent product in category or category non-existent",
+      });
+  return res.status(200).json(result);
+};
 
 export {
   getProductsController,
@@ -122,5 +124,5 @@ export {
   getProductByIdController,
   deleteProductByIdControler,
   updateProductControler,
-  getProductsByCategoryController
+  getProductsByCategoryController,
 };
