@@ -11,16 +11,32 @@ import dotenvConfig from './config/dotenv.config.js';
 import cookieParser from "cookie-parser";
 import initializePassport from './config/passport.config.js';
 import passport from 'passport';
+import swaggerJsdoc from 'swagger-jsdoc';
+import swaggerUiExpress from 'swagger-ui-express';
+
+
 
 //initializations
 const app = express();
 const PORT = dotenvConfig.app.PORT || 8080;
 const HOST = dotenvConfig.app.HOST || '127.0.0.1'
+const swaggerOptions = {
+    definition: {
+        openapi: '3.0.1',
+        info: {
+            title: 'API ecommerce-CoderHouse',
+            description: 'Ecommerce project for the CoderHouse Back End course'
+        }
+    },
+    apis: [`${__dirname}/docs/**/*.yaml`]
+};
+const specs =  swaggerJsdoc(swaggerOptions)
 
-logger.log('debug',`Dirname en app : ${__dirname}`)
+
 
 // Template config engine
 app.set('views',__dirname+'/views');
+logger.log('debug',`Dirname en app : ${__dirname}`)
 app.set('view engine', 'ejs');
 
 // middlewares
@@ -29,6 +45,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 initializePassport();
 app.use(passport.initialize());
+
 
 //static files
 app.use("/", express.static(__dirname + "/public"));
@@ -40,6 +57,7 @@ app.use('/api/products', productsRouter);
 app.use('/api/carts', cartsRouter);
 app.use('/api/sessions', sessionsRouter);
 app.use('/api/messages', messagesRouter);
+app.use('/apidocs', swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
 
 //starting de server
 const server = app.listen(PORT, () => {
