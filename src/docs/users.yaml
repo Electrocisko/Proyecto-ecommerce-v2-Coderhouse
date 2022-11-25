@@ -1,5 +1,17 @@
 components:
   requestBodies:
+    loginUser:
+      type: object
+      properties:
+        email:
+          type: String
+          description: mail
+        password: 
+          type: String
+          description: password
+      example:
+        email: katebush@correo.com
+        password: abc
     newUser:
       type: object
       properties:
@@ -30,8 +42,8 @@ components:
       example:
         name: Kate Bush
         email: katebush@correo.com
-        password: 123
-        passwordCheck: 123
+        password: abc
+        passwordCheck: abc
         address: Horton St 40 London
         age: 63
         phoneNumber: 44 20 7481 0513
@@ -102,20 +114,38 @@ paths:
           description: couldnt get users
   /api/sessions/register:
     post:
-      sumary: register a new user
+      summary: register a new user
       tags:
         - Users
       requestBody:
         requiered: true
         content:
-          applicaction/json:
+          application/json:
             schema:
               $ref: '#/components/requestBodies/newUser'
       responses:
         "201":
-          description: "the user was added successfully"
+          description: "succes payload: "
         "400":
-          description: "values incomplete"
+          description: "user registration error"
         "500":
           description: "couldnt save user"
+  /api/sessions/login:
+    post:
+      summary: log in a new user
+      tags:
+        - Users
+      requestBody:
+        requiered: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/requestBodies/loginUser'
+      responses:
+        "201":
+          description: "200 return user "
+        "400":
+          description: "user login error"
+        "500":
+          description: "couldnt login user"
 

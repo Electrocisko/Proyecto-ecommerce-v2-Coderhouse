@@ -22,6 +22,7 @@ router.post(
   registerController
 );
 
+
 router.post(
   "/login",
   passport.authenticate("login", {
