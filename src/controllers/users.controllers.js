@@ -7,8 +7,8 @@ const getUsersController = async (req,res) => {
         let data = await getUsers();
         return res.status(200).json(data)
     } catch (error) {
-        logger.log("error", `Error in getCartsController ${error} `);
-        res.status(500).send({ error: error, message: "couldnt get cart" }); 
+        logger.log("error", `Error in getUsersController ${error} `);
+        res.status(500).send({ error: error, message: "couldnt get users" }); 
     }
 };
 

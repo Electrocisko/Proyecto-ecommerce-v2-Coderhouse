@@ -39,7 +39,7 @@ const logoutController = async (req,res) => {
 };
 
 const loginFailControler = async (req,res) => {
-    res.status(400).send({ status: "error", message: "user registration error" });;
+    res.status(400).send({ status: "error", message: "user login error" });;
 };
 
 const registerFailControler = async (req, res) => {
