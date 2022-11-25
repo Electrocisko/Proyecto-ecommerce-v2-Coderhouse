@@ -88,7 +88,51 @@ paths:
           description: "values incomplete"
         "500":
           description: "couldnt save products"
-        
+  /api/products/{id}:
+    get:
+      summary: Gets the product with given id
+      tags:
+        - Products
+      parameters:
+      - name: id
+        in: path
+        description: path parameter takes the product id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: The product with given id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        "400":
+          description: nonexistent product or invalid id
+        "500":
+          description: couldnt get product
+    delete:
+      summary: Delete the product with given id
+      tags:
+        - Products
+      parameters:
+      - name: id
+        in: path
+        description: path parameter takes the product id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Product Removed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        "400":
+          description: nonexistent product or invalid id
+        "500":
+          description: couldnt delete product
+         
+
         
 
 
