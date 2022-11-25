@@ -8,7 +8,8 @@ import {
   viewErrorLoginController,
   viewErrorRegisterController,
   viewEnterProductController,
-  viewModifiedProductController
+  viewModifiedProductController,
+  viewProductDetailController
 } from "../controllers/views.controllers.js";
 
 const router = new Router();
@@ -30,5 +31,7 @@ router.get('/errorregister', viewErrorRegisterController);
 router.get('/enterproduct', viewEnterProductController);
 
 router.get('/modifiedproduct', viewModifiedProductController);
+
+router.get('/productdetail', viewProductDetailController)
 
 export default router;
