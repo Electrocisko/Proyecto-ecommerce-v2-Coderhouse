@@ -36,7 +36,6 @@ const specs =  swaggerJsdoc(swaggerOptions)
 
 // Template config engine
 app.set('views',__dirname+'/views');
-logger.log('debug',`Dirname en app : ${__dirname}`)
 app.set('view engine', 'ejs');
 
 // middlewares
