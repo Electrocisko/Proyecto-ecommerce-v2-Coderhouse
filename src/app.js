@@ -1,4 +1,5 @@
 import express from 'express';
+import dotenvConfig from './config/dotenv.config.js';
 import logger from './config/winston.config.js';
 import __dirname from './helpers/utils.js';
 import viewsRouter from './routes/views.router.js';
@@ -7,7 +8,6 @@ import cartsRouter from './routes/carts.router.js';
 import productsRouter from './routes/products.router.js';
 import sessionsRouter from './routes/sessions.router.js';
 import messagesRouter from './routes/messages.router.js';
-import dotenvConfig from './config/dotenv.config.js';
 import cookieParser from "cookie-parser";
 import initializePassport from './config/passport.config.js';
 import passport from 'passport';
