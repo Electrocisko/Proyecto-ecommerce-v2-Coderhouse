@@ -9,7 +9,7 @@ export default {
         HOST: process.env.HOST || '127.0.0.1',
         LOGS: process.env.LOGS || 'silly'
     },
-    mongo:{
+    mongo: {
         MONGO_URL: process.env.MONGO_URL 
     },
     jwt: {
@@ -20,5 +20,9 @@ export default {
         NM_EMAIL: process.env.NM_EMAIL,
         NM_CODE: process.env.NM_CODE,
         NM_ADDRESSEE: process.env.NM_ADDRESSEE
+    },
+    session: {
+        ADMIN_EMAIL: process.env.ADMIN_EMAIL,
+        ADMIN_PWD: process.env.ADMIN_PWD
     }
 }
