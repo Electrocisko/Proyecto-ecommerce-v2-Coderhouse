@@ -3,7 +3,7 @@ import dotenvConfig from "../../config/dotenv.config.js";
 import logger from "../../config/winston.config.js";
 
 
-const MONGO_URL = dotenvConfig.mongo.MONGO_URL;
+const MONGO_URL = dotenvConfig.mongo.MONGO_URL.toString()
 
 console.log(MONGO_URL)
 
