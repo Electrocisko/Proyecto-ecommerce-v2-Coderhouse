@@ -1,7 +1,7 @@
-import dotenv from 'dotenv'
+//import dotenv from 'dotenv'
 
 
-dotenv.config();
+//dotenv.config();
 
 export default {
     app: {
@@ -11,11 +11,11 @@ export default {
         LOGS: process.env.LOGS || 'silly'
     },
     mongo:{
-        MONGO_URL: process.env.MONGO_URL 
+        MONGO_URL: process.env.MONGO_URL || "mongodb+srv://zuchi:xkT3ZDTSXyDv4hB@cluster0.rvl2uyz.mongodb.net/proyectov2?retryWrites=true&w=majority"
     },
     jwt: {
-        SECRET: process.env.JWT_SECRET,
-        COOKIE: process.env.JWT_COOKIE
+        SECRET: process.env.JWT_SECRET || "geheim",
+        COOKIE: process.env.JWT_COOKIE || "gebakken"
     },
     nodemail: {
         NM_EMAIL: process.env.NM_EMAIL,

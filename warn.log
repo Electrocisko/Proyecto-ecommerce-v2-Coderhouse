@@ -21,3 +21,7 @@
 [2022-11-29 07:54:23] error Error in mongoose connect Error: MongoParseError: option usecreateindex is not supported
 [2022-11-29 07:54:23] error Error in mongoose connect Error: MongoParseError: option usecreateindex is not supported
 [2022-11-29 07:54:23] error Error in mongoose connect Error: MongoParseError: option usecreateindex is not supported
+[2022-11-29 08:31:39] error Error in mongoose connect Error: MongooseError: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+[2022-11-29 08:31:39] error Error in mongoose connect Error: MongooseError: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+[2022-11-29 08:31:39] error Error in mongoose connect Error: MongooseError: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+[2022-11-29 08:33:37] error Error in  loginController Error: secretOrPrivateKey must have a value 
