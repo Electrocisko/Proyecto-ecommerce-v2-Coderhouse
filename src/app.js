@@ -63,4 +63,3 @@ const server = app.listen(PORT, () => {
     logger.log('info',`Server listen in http://${HOST}:${PORT}`)
 });
 
-console.log(process.env)
