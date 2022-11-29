@@ -17,8 +17,8 @@ import swaggerUiExpress from 'swagger-ui-express';
 
 
 //initializations
-const PORT = dotenvConfig.app.PORT || 8080;
-const HOST = dotenvConfig.app.HOST || '127.0.0.1'
+const PORT = dotenvConfig.app.PORT
+const HOST = dotenvConfig.app.HOST 
 const app = express();
 const swaggerOptions = {
     definition: {
