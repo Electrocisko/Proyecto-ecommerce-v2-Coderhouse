@@ -12,3 +12,12 @@
 [2022-11-24 17:41:42] error Error in PostProductsController TypeError: Cannot read properties of undefined (reading 'filename') 
 [2022-11-24 17:52:02] error Error in PostProductsController TypeError: Cannot read properties of undefined (reading 'filename') 
 [2022-11-24 17:55:24] error Error in PostProductsController TypeError: Cannot read properties of undefined (reading 'filename') 
+[2022-11-29 07:49:12] error Error in mongoose connect Error: MongoParseError: option usecreateindex is not supported
+[2022-11-29 07:49:12] error Error in mongoose connect Error: MongoParseError: option usecreateindex is not supported
+[2022-11-29 07:49:12] error Error in mongoose connect Error: MongoParseError: option usecreateindex is not supported
+[2022-11-29 07:50:27] error Error in mongoose connect Error: MongoParseError: option usecreateindex is not supported
+[2022-11-29 07:50:27] error Error in mongoose connect Error: MongoParseError: option usecreateindex is not supported
+[2022-11-29 07:50:27] error Error in mongoose connect Error: MongoParseError: option usecreateindex is not supported
+[2022-11-29 07:54:23] error Error in mongoose connect Error: MongoParseError: option usecreateindex is not supported
+[2022-11-29 07:54:23] error Error in mongoose connect Error: MongoParseError: option usecreateindex is not supported
+[2022-11-29 07:54:23] error Error in mongoose connect Error: MongoParseError: option usecreateindex is not supported

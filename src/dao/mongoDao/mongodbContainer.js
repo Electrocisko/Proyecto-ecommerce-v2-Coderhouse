@@ -9,7 +9,11 @@ console.log(MONGO_URL)
 
 export default class MongoDBcontainer {
     constructor (collection, schema) {
-        mongoose.connect(MONGO_URL, { useNewUrlParser: true })
+        mongoose.connect(MONGO_URL, {
+            //must add in order to not get any error masseges:
+            useUnifiedTopology:true,
+            useNewUrlParser: true,
+        })
         .then( () => {
             this.model = mongoose.model(collection, schema);
             logger.log('info',`Mongodb connected`)
