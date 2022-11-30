@@ -10,29 +10,50 @@
         <div class="col-auto">
           <div>
             <% if(!user.imageUrl){ %>
-              <img src="/img/avatar.png" width="70" />
-            <% } else{ %>  
-              <img src="/img/<%= user.imageUrl %> " width="70" />
-           <% } %>
-          </div>
-          <div>
-            <% if(user.role === 'admin'){ %>
-              <p>ES ADMIN</p>
-            <% } else{ %>  
-              <p>ES USER</p>
-           <% } %>
+            <img src="/img/avatar.png" width="70" />
+            <% } else{ %>
+            <img src="/img/<%= user.imageUrl %> " width="70" />
+            <% } %>
           </div>
 
+          <h3>Bienvenid@ <%= user.name %></h3>
 
-          <h3>
-            Welcome <%= user.name %>
-        
-          <a href="/api/sessions/logout" >
-            <input type=" button" class="btn btn-primary btn-sm" value="Cerrar Sesión">
+          <% if(user.role === 'admin'){ %>
+          <p>Administrador</p>
+          <a href="/enterproduct" style="text-decoration: none">
+            <input
+              type=" button"
+              class="btn btn-primary btn-sm"
+              value="Agregar Producto"
+            />
           </a>
-          </h3>
-          <a href="/cart" >
-            <input type=" button" class="btn btn-primary btn-sm" value="Ver carrito">
+
+          <a href="/modifiedproduct" style="text-decoration: none">
+            <input
+              type=" button"
+              class="btn btn-primary btn-sm"
+              value="Modificar Producto"
+            />
+          </a>
+
+          <% } else{ %>
+          <p>Usuario</p>
+          <% } %>
+
+          <a href="/api/sessions/logout" style="text-decoration: none">
+            <input
+              type=" button"
+              class="btn btn-danger btn-sm"
+              value="Cerrar Sesión"
+            />
+          </a>
+
+          <a href="/cart" style="text-decoration: none">
+            <input
+              type=" button"
+              class="btn btn-primary btn-sm"
+              value="Ver carrito"
+            />
           </a>
           <p id="cartId" hidden><%= user.cart %></p>
         </div>
@@ -41,11 +62,11 @@
 
       <h1>Lista de productos</h1>
 
-      <div >
-       <div class='d-flex justify-content-center flex-wrap'>
+      <div>
+        <div class="d-flex justify-content-center flex-wrap">
           <% products.forEach(function(product){ %> <%-
           include('../partials/card.ejs', {product: product}); %> <% }); %>
-       </div>
+        </div>
       </div>
     </main>
 

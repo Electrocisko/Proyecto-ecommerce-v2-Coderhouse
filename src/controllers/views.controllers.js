@@ -81,6 +81,10 @@ const viewEnterProductController = async (req, res) => {
     "info",
     `request type ${req.method} en route ${req.path} ${new Date()}`
   );
+  const token = req.cookies[dotenvConfig.jwt.COOKIE];
+  if (!token) return res.redirect("/login");
+  const user = jwt.verify(token, dotenvConfig.jwt.SECRET);
+  if (user.role === 'user') return res.redirect('/menu')
   res.render("pages/enterProduct.ejs");
 };
 
@@ -89,6 +93,10 @@ const viewModifiedProductController = async (req, res) => {
     "info",
     `request type ${req.method} en route ${req.path} ${new Date()}`
   );
+  const token = req.cookies[dotenvConfig.jwt.COOKIE];
+  if (!token) return res.redirect("/login");
+  const user = jwt.verify(token, dotenvConfig.jwt.SECRET);
+  if (user.role === 'user') return res.redirect('/menu')
   res.render("pages/modifiedProduct.ejs");
 };
 
