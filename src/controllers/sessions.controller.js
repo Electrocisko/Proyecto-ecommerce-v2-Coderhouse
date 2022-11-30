@@ -31,10 +31,10 @@ const loginController = async (req, res) => {
         cart: cart,
       };
       const tokenAdmin = jwt.sign(sessionAdminUser, dotenvConfig.jwt.SECRET, {
-        expiresIn: 600,
+        expiresIn: '1h',
       });
       return res
-        .cookie(dotenvConfig.jwt.COOKIE, tokenAdmin, { maxAge: 60000 })
+        .cookie(dotenvConfig.jwt.COOKIE, tokenAdmin, { maxAge: 3600000 })
         .send(req.user);
     }
     const token = jwt.sign(loginUser, dotenvConfig.jwt.SECRET, {

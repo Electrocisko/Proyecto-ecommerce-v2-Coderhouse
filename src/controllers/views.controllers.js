@@ -102,7 +102,6 @@ const viewModifiedProductController = async (req, res) => {
 
 
 const viewProductDetailController = async (req, res) => {
-
   logger.log(
     "info",
     `request type ${req.method} en route ${req.path} ${new Date()}`
@@ -114,6 +113,18 @@ const viewProductDetailController = async (req, res) => {
   let product = await services.productsService.getById(prodId)
   res.render('pages/productDetail.ejs', {product})
 };
+
+const viewProductDeleteController = async (req,res) => {
+  logger.log(
+    "info",
+    `request type ${req.method} en route ${req.path} ${new Date()}`
+  );
+  const token = req.cookies[dotenvConfig.jwt.COOKIE];
+  if (!token) return res.redirect("/login");
+  const user = jwt.verify(token, dotenvConfig.jwt.SECRET);
+  if (user.role === 'user') return res.redirect('/menu')
+  res.render("pages/deleteProduct.ejs");
+}
 
 
 
@@ -127,5 +138,6 @@ export {
   viewErrorRegisterController,
   viewEnterProductController,
   viewModifiedProductController,
-  viewProductDetailController
+  viewProductDetailController,
+  viewProductDeleteController
 };
