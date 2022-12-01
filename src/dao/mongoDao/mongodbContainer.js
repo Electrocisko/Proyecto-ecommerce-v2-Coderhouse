@@ -5,7 +5,6 @@ import logger from "../../config/winston.config.js";
 
 const MONGO_URL = dotenvConfig.mongo.MONGO_URL
 
-console.log(MONGO_URL)
 
 export default class MongoDBcontainer {
     constructor (collection, schema) {
