@@ -55,6 +55,7 @@ const viewCartController = async (req, res) => {
   const user = jwt.verify(token, dotenvConfig.jwt.SECRET);
   let cart = await services.cartsService.getByIdAndPopulate(user.cart);
   let products = cart[0].products;
+  products.sort((x, y) => x.product.price - y.product.price); //so that it always appears in the same order
   res.render("pages/cart.ejs", { user, products });
 };
 

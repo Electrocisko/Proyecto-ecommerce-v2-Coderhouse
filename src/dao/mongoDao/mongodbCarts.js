@@ -16,7 +16,9 @@ export default class MongoCarts extends MongoDBcontainer {
   getByIdAndPopulate = async (id) => {
     let result = await this.model
       .find({ _id: id })
-      .populate("products.product");
+      .populate({
+        path: "products.product"
+    })
     return result;
   };
 
@@ -25,3 +27,4 @@ export default class MongoCarts extends MongoDBcontainer {
     return result;
   };
 }
+

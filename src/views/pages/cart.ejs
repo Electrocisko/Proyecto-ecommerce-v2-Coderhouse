@@ -22,29 +22,51 @@
         <h4>Pedido usuario: <%= user.name %></h4>
         <p id="email"><%= user.email %> </p>
         <p>Numero de pedido: <span id="cartId"><%= user.cart %></span></p>
+        
         <table class="table table-striped">
           <thead>
             <tr>
               <th scope="col">Producto</th>
               <th scope="col">Cantidad</th>
               <th scope="col">Precio</th>
+              <th scope="col">Imagen</th>
             </tr>
           </thead>
           <tbody>
             <% products.forEach(product => { %>
             <tr>
-              <td scope="row" class="align-middle fs-6">
+              <th scope="row" class="align-middle fs-6">
                 <%= product.product.name %>
-              </td>
+              </th>
               <td class="align-middle fs-6"><%= product.quantity %></td>
               <td class="align-middle fs-6">
                 <%= (product.product.price * product.quantity) %>
+              </td>
+              <td>
+                <button
+                  class="btn btn-info btn-sm m-1"
+                  onclick='addProduct("<%= product.product._id %>","<%=user.cart%>")'
+                >
+                  +</button
+                ><button class="btn btn-info btn-sm m-1">-</button>
+              </td>
+              <td>
+                <img
+                  src="img/<%= product.product.thumbnail %>"
+                  alt="producto"
+                  height="40px"
+                />
               </td>
             </tr>
             <% }) %>
           </tbody>
         </table>
-    
+
+
+
+
+
+
   
         <div id="total-price"></div>
         

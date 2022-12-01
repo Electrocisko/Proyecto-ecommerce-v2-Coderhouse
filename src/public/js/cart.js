@@ -66,3 +66,23 @@ const handleSubmit = (url,order) => {
       window.location.href = "/";
     })
   }
+
+  ////////////////////////
+
+  let addProduct = (prodID, cartId) => {
+    let url = `/api/carts/${cartId}/products`;
+    fetch(url, {
+      method: "PUT",
+      body: JSON.stringify({
+        product: prodID,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then(() => {
+        //alert('agregado')
+        location.reload();
+      });
+  };
