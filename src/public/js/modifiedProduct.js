@@ -28,7 +28,6 @@ const getProduct = (id) => {
 const handleSubmit = (evt, form, route) => {
   evt.preventDefault();
   let url = route+'/'+id.value;
-  console.log(url);
   let formData = new FormData(form);
   console.log(formData.get('thumbnail'));
   fetch(url, {

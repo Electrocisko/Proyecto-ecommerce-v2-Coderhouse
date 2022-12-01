@@ -3,41 +3,91 @@
   <head>
     <%- include('../partials/head.ejs') %>
   </head>
-  <body class="container">
+  <body class="container" >
     <header><%- include('../partials/navbar.ejs') %></header>
     <main>
       <form class="row g-3">
         <div class="col-auto">
           <div>
             <% if(!user.imageUrl){ %>
-              <img src="/img/avatar.png" width="70" />
-            <% } else{ %>  
-              <img src="/img/<%= user.imageUrl %> " width="70" />
-           <% } %>
+            <img src="/img/avatar.png" width="70" />
+            <% } else{ %>
+            <img src="/img/<%= user.imageUrl %> " width="70" />
+            <% } %>
           </div>
-          <h3>
-            Welcome <%= user.name %>
-        
-          <a href="/api/sessions/logout" >
-            <input type=" button" class="btn btn-primary btn-sm" value="Cerrar Sesión">
+
+          <h3>Bienvenid@ <%= user.name %></h3>
+
+          <% if(user.role === 'admin'){ %>
+          <p>Administrador</p>
+          <a href="/enterproduct" style="text-decoration: none">
+            <input
+              type=" button"
+              class="btn btn-primary btn-sm"
+              value="Agregar Producto"
+            />
           </a>
-          </h3>
-          <a href="/cart" >
-            <input type=" button" class="btn btn-primary btn-sm" value="Ver carrito">
+
+          <a href="/modifiedproduct" style="text-decoration: none">
+            <input
+              type=" button"
+              class="btn btn-primary btn-sm"
+              value="Modificar Producto"
+            />
           </a>
+          
+          <a href="/deleteproduct" style="text-decoration: none">
+            <input
+              type=" button"
+              class="btn  btn-sm btn-outline-primary"
+              value="Eliminar Producto"
+            />
+          </a>
+
+          <a href="/api/sessions/logout" style="text-decoration: none">
+            <input
+              type=" button"
+              class="btn btn-danger btn-sm"
+              value="Cerrar Sesión"
+            />
+          </a>
+          <div class="d-flex justify-content-center flex-wrap">
+            <% products.forEach(function(product){ %> <%-
+            include('../partials/cardAdmin.ejs', {product: product}); %> <% }); %>
+          </div>
+        </div>
+
+          <% } else{ %>
+          <p>Usuario</p>
+          <a href="/api/sessions/logout" style="text-decoration: none">
+            <input
+              type=" button"
+              class="btn btn-danger btn-sm"
+              value="Cerrar Sesión"
+            />
+          </a>
+
+          <a href="/cart" style="text-decoration: none">
+            <input
+              type=" button"
+              class="btn btn-primary btn-sm"
+              value="Ver carrito"
+            />
+          </a>
+          <h1>Lista de productos</h1>
+
+          <div>
+            <div class="d-flex justify-content-center flex-wrap">
+              <% products.forEach(function(product){ %> <%-
+              include('../partials/card.ejs', {product: product}); %> <% }); %>
+            </div>
+          </div>
+          <% } %>
+
           <p id="cartId" hidden><%= user.cart %></p>
         </div>
         <hr />
       </form>
-
-      <h1>Lista de productos</h1>
-
-      <div >
-       <div class='d-flex justify-content-center flex-wrap'>
-          <% products.forEach(function(product){ %> <%-
-          include('../partials/card.ejs', {product: product}); %> <% }); %>
-       </div>
-      </div>
     </main>
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

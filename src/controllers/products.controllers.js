@@ -72,9 +72,7 @@ const deleteProductByIdControler = async (req, res) => {
       return res
         .status(400)
         .send({ status: "error", error: "nonexistent product" });
-    return res.status(200).send({
-      "Product Removed": data,
-    });
+    return res.status(200).send({ status:'succes', data });
   } catch (error) {
     logger.log("error", `Error in deleteProductByIdController ${error} `);
     res.status(500).send({ error: error, message: "couldnt delete product" });
