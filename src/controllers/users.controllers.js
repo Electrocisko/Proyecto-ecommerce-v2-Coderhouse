@@ -1,5 +1,5 @@
 import logger from '../config/winston.config.js';
-import { getUsers, saveUser, getUserById, updateUser } from '../services/users.services.js';
+import { getUsers, getUserById, updateUser } from '../services/users.services.js';
 import { ObjectId } from "mongodb";
 
 const getUsersController = async (req,res) => {
