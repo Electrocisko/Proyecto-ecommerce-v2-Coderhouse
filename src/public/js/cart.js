@@ -1,12 +1,12 @@
 let array = document.getElementsByClassName("precios");
 let totalPrice = document.createElement("p");
 let sendMail = document.getElementById("sendMail");
-let total = document.getElementById('total-price');
-let orderToSend = document.getElementById('order');
-let cartId = document.getElementById('cartId').textContent;
-let userMail = document.getElementById('email').textContent;
+let total = document.getElementById("total-price");
+let orderToSend = document.getElementById("order");
+let cartId = document.getElementById("cartId").textContent;
+let userMail = document.getElementById("email").textContent;
 
-let sum = 0
+let sum = 0;
 
 for (let index = 0; index < array.length; index++) {
   const element = array[index];
@@ -46,59 +46,57 @@ let emptyCart = (id) => {
 };
 
 sendMail.addEventListener("click", (evt) => {
-  let data = {message: orderToSend.innerHTML, cartId, userMail};
+  let data = { message: orderToSend.innerHTML, cartId, userMail };
   let url = "/api/messages/mail";
-  Swal.fire('Orden enviado');
-  handleSubmit(url,data);
+  Swal.fire("Orden enviado");
+  handleSubmit(url, data);
 });
 
-const handleSubmit = (url,order) => {
+const handleSubmit = (url, order) => {
   fetch(url, {
-    method: 'POST',
+    method: "POST",
     body: JSON.stringify(order),
     headers: {
-    'Content-type': 'application/json; charset=UTF-8',
+      "Content-type": "application/json; charset=UTF-8",
     },
-    })
+  })
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
       window.location.href = "/";
-    })
-  }
+    });
+};
 
+let addProduct = (prodID, cartId) => {
+  let url = `/api/carts/${cartId}/products`;
+  fetch(url, {
+    method: "PUT",
+    body: JSON.stringify({
+      product: prodID,
+    }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  })
+    .then((response) => response.json())
+    .then(() => {
+      location.reload();
+    });
+};
 
-
-  let addProduct = (prodID, cartId) => {
-    let url = `/api/carts/${cartId}/products`;
-    fetch(url, {
-      method: "PUT",
-      body: JSON.stringify({
-        product: prodID,
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    })
-      .then((response) => response.json())
-      .then(() => {
-        location.reload();
-      });
-  };
-
-  let subtractProduct = (prodID,cartId) => {
-    let url = `/api/carts/${cartId}/subtract`;
-    fetch(url, {
-      method: "PUT",
-      body: JSON.stringify({
-        product: prodID,
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    })
-      .then((response) => response.json())
-      .then(() => {
-        location.reload();
-      });
-  }
+let subtractProduct = (prodID, cartId) => {
+  let url = `/api/carts/${cartId}/subtract`;
+  fetch(url, {
+    method: "PUT",
+    body: JSON.stringify({
+      product: prodID,
+    }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  })
+    .then((response) => response.json())
+    .then(() => {
+      location.reload();
+    });
+};
