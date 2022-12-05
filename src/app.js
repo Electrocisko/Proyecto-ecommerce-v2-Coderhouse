@@ -57,6 +57,11 @@ app.use('/api/carts', cartsRouter);
 app.use('/api/sessions', sessionsRouter);
 app.use('/api/messages', messagesRouter);
 app.use('/apidocs', swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
+app.use(function (req, res, next) {
+    res.status(404).send({
+      message: "Error route not implemented",
+    });
+  });
 
 //starting de server
 const server = app.listen(PORT, () => {

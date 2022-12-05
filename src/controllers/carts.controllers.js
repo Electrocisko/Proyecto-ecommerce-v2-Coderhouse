@@ -7,7 +7,6 @@ import {
   getCartById,
   deleteCartById,
   updateCart,
-  getProductInCart,
 } from "../services/carts.services.js";
 import { getProductById } from "../services/products.services.js";
 
@@ -96,7 +95,7 @@ const deleteProductByIdInCartController = async (req, res) => {
         .status(400)
         .send({ status: "error", error: "product does not exist in cart" });
     } else {
-      productsInCart.splice(prodIndex, 1); // I delete the product from array
+      productsInCart.splice(prodIndex, 1); 
     }
     let newData = {
       products: productsInCart,
@@ -130,7 +129,7 @@ const getProductsInCartController = async (req, res) => {
   }
 };
 
-// ////////////////// To add products to the cart by their product id
+
 const addProductInCartContoller = async (req, res) => {
   try {
     let productsInCart;
@@ -161,14 +160,13 @@ const addProductInCartContoller = async (req, res) => {
       (item) => item.product.toString() === addProduct.product.toString()
     );
     if (prodIndex === -1) {
-      // If there are no products, it is added directly
-      productsInCart.push(addProduct); //I update the cart with the added product
+      productsInCart.push(addProduct); 
     } else {
       let newCuantity =
         productsInCart[prodIndex].quantity + addProduct.quantity;
       addProduct.quantity = newCuantity;
-      productsInCart.splice(prodIndex, 1); // I delete the old object and
-      productsInCart.push(addProduct); // I push the new updated object
+      productsInCart.splice(prodIndex, 1); 
+      productsInCart.push(addProduct); 
     }
     newData = {
       products: productsInCart,
@@ -236,7 +234,7 @@ const subtractProductInCartController = async (req, res) => {
   );
   if (prodIndex !== -1) {
     if (productsInCart[prodIndex].quantity === 1) {
-      productsInCart.splice(prodIndex, 1); // I delete the product from array
+      productsInCart.splice(prodIndex, 1); 
       let newData = {
         products: productsInCart,
       };
