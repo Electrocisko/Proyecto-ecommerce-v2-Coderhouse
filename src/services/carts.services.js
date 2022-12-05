@@ -30,6 +30,11 @@ const getPopulateCart = async (id) => {
   return result;
 };
 
+const getProductInCart = async (id) => {
+  let result = await services.cartsService.getProductInCart(id);
+  return result
+}
+
 export {
   getAllCarts,
   saveCart,
@@ -37,4 +42,5 @@ export {
   deleteCartById,
   updateCart,
   getPopulateCart,
+  getProductInCart
 };

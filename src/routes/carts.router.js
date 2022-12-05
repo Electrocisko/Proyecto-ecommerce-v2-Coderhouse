@@ -6,7 +6,8 @@ import {
   deleteCartByIdControler,
   addProductInCartContoller,
   getProductsInCartController,
-  deletteAllProductsInCartController
+  deletteAllProductsInCartController,
+  subtractProductInCartController
 } from "../controllers/carts.controllers.js";
 
 const router = new Router();
@@ -22,6 +23,8 @@ router.delete('/:cid',deleteCartByIdControler);
 router.get("/:cid/products", getProductsInCartController );
 
 router.put("/:cid/products", addProductInCartContoller );
+
+router.put('/:cid/subtract', subtractProductInCartController);
 
 router.put('/:cid',deletteAllProductsInCartController);
 

@@ -7,6 +7,7 @@ import {
   getCartById,
   deleteCartById,
   updateCart,
+  getProductInCart
 } from "../services/carts.services.js";
 import { getProductById } from "../services/products.services.js";
 
@@ -162,6 +163,51 @@ const deletteAllProductsInCartController = async (req, res) => {
       .send({ error: error, message: "couldnt delete  products in cart" });
   }
 };
+////////////////////////////////////////////////////////////////////////////////////////
+
+const subtractProductInCartController = async (req,res) => {
+  let productsInCart;
+  let cartID = req.params.cid;
+  if (!ObjectId.isValid(cartID))
+      return res
+        .status(400)
+        .send({ status: "error", error: "invalid cart id" });
+  let subtractProduct = req.body;
+  let cart = await getCartById(cartID);
+  if (cart === null) {
+    return res
+      .status(400)
+      .send({ status: "error", error: "cart does not exist" });
+  };
+  let existProduct = await getProductById(subtractProduct.product);
+  if (existProduct === null) {
+    return res
+      .status(400)
+      .send({ status: "error", error: "product not exist" });
+  };
+  if (subtractProduct.quantity === undefined) {
+    subtractProduct.quantity = 1;
+  };
+productsInCart= cart.products;
+const prodIndex = productsInCart.findIndex(
+  (item) => item.product.toString() === subtractProduct.product.toString()
+);
+if (prodIndex !== -1) {
+  if ( productsInCart[prodIndex].quantity === 1) {
+    console.log('ultimo')
+  }
+  else {console.log('hay mas')}
+
+
+  let newQuantity = productsInCart[prodIndex].quantity -  subtractProduct.quantity;
+  console.log('NEWQUANTITY',newQuantity)
+
+}
+
+  res.send({message: 'ACA resto'})
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
 
 export {
   getCartsController,
@@ -171,4 +217,5 @@ export {
   getProductsInCartController,
   addProductInCartContoller,
   deletteAllProductsInCartController,
+  subtractProductInCartController
 };

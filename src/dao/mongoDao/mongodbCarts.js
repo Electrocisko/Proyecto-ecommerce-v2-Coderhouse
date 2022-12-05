@@ -26,5 +26,6 @@ export default class MongoCarts extends MongoDBcontainer {
     let result = await this.model.create({ products: [] });
     return result;
   };
+
 }
 

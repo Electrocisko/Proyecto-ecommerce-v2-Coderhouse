@@ -86,3 +86,26 @@ const handleSubmit = (url,order) => {
         location.reload();
       });
   };
+
+  let subtractProduct = (prodID,cartId) => {
+    let url = `/api/carts/${cartId}/subtract`;
+    fetch(url, {
+      method: "PUT",
+      body: JSON.stringify({
+        product: prodID,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+        
+        //location.reload();
+      });
+    
+    
+
+
+  }
