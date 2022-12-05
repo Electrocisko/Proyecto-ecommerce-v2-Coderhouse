@@ -67,7 +67,7 @@ const handleSubmit = (url,order) => {
     })
   }
 
-  ////////////////////////
+
 
   let addProduct = (prodID, cartId) => {
     let url = `/api/carts/${cartId}/products`;
@@ -82,7 +82,6 @@ const handleSubmit = (url,order) => {
     })
       .then((response) => response.json())
       .then(() => {
-        //alert('agregado')
         location.reload();
       });
   };
@@ -99,13 +98,7 @@ const handleSubmit = (url,order) => {
       },
     })
       .then((response) => response.json())
-      .then((data) => {
-        console.log(data)
-        
-        //location.reload();
+      .then(() => {
+        location.reload();
       });
-    
-    
-
-
   }

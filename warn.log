@@ -27,3 +27,9 @@
 [2022-11-29 08:33:37] error Error in  loginController Error: secretOrPrivateKey must have a value 
 [2022-11-29 18:55:56] error Error in  loginController ReferenceError: loginUser is not defined 
 [2022-11-29 18:56:40] error Error in  loginController ReferenceError: loginUser is not defined 
+[2022-12-05 08:30:21] error Error in deleteProductByIdInCartController CastError: Cast to ObjectId failed for value "{}" (type Object) at path "_id" for model "products" 
+[2022-12-05 08:37:46] error Error in deleteProductByIdInCartController CastError: Cast to ObjectId failed for value "{}" (type Object) at path "_id" for model "products" 
+[2022-12-05 08:39:04] error Error in deleteProductByIdInCartController CastError: Cast to ObjectId failed for value "{ product: '636abdd855a702ed60316a7d' }" (type Object) at path "_id" for model "products" 
+[2022-12-05 09:00:20] error Error in deleteProductByIdInCartController ReferenceError: addProduct is not defined 
+[2022-12-05 09:01:10] error Error in deleteProductByIdInCartController ReferenceError: addProduct is not defined 
+[2022-12-05 09:20:17] error Error in deleteProductByIdInCartController ReferenceError: newData is not defined 
