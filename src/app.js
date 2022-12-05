@@ -8,6 +8,7 @@ import cartsRouter from './routes/carts.router.js';
 import productsRouter from './routes/products.router.js';
 import sessionsRouter from './routes/sessions.router.js';
 import messagesRouter from './routes/messages.router.js';
+import ordersRouter from './routes/orders.router.js';
 import cookieParser from "cookie-parser";
 import initializePassport from './config/passport.config.js';
 import passport from 'passport';
@@ -55,6 +56,7 @@ app.use('/api/users', usersRouter);
 app.use('/api/products', productsRouter);
 app.use('/api/carts', cartsRouter);
 app.use('/api/sessions', sessionsRouter);
+app.use('/api/orders', ordersRouter);
 app.use('/api/messages', messagesRouter);
 app.use('/apidocs', swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
 app.use(function (req, res, next) {

@@ -3,6 +3,7 @@ const persistence = "mongodb";
 let productsService;
 let cartsService;
 let usersService;
+let ordersService;
 
 switch (persistence) {
     // case "memory":
@@ -26,14 +27,16 @@ switch (persistence) {
       cartsService = new MongoCarts();
       const { default: MongoUser } = await import("./mongoDao/mongodbUsers.js");
       usersService = new MongoUser();
+      const { default: MongoOrder } = await import("./mongoDao/mongodbOrders.js");
+      ordersService = new MongoOrder();
       break;
   };
 
   const services = {
     productsService,
     cartsService,
-    persistence,
-    usersService
+    usersService,
+    ordersService
   };
   
   export default services;

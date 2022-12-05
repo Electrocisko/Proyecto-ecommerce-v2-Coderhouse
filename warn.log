@@ -33,3 +33,15 @@
 [2022-12-05 09:00:20] error Error in deleteProductByIdInCartController ReferenceError: addProduct is not defined 
 [2022-12-05 09:01:10] error Error in deleteProductByIdInCartController ReferenceError: addProduct is not defined 
 [2022-12-05 09:20:17] error Error in deleteProductByIdInCartController ReferenceError: newData is not defined 
+[2022-12-05 12:57:26] error Error in saveOrderController ReferenceError: result is not defined 
+[2022-12-05 13:41:08] error Error in saveOrderController ValidationError: buyerAddress: Path `buyerAddress` is required. 
+[2022-12-05 13:59:00] error Error in getByOrderNroController ReferenceError: result is not defined 
+[2022-12-05 13:59:10] error Error in getByOrderNroController ReferenceError: result is not defined 
+[2022-12-05 13:59:12] error Error in getByOrderNroController ReferenceError: result is not defined 
+[2022-12-05 14:05:02] error Error in getByOrderNroController ReferenceError: result is not defined 
+[2022-12-05 14:11:20] error Error in saveOrderController ValidationError: orderNro: Path `orderNro` is required. 
+[2022-12-05 14:14:17] error Error in saveOrderController ReferenceError: orderNro is not defined 
+[2022-12-05 14:20:00] error Error in saveOrderController MongoServerError: E11000 duplicate key error collection: proyectov2.orders index: orderNro_1 dup key: { orderNro: 1 } 
+[2022-12-05 14:37:13] error Error in saveOrderController ReferenceError: counter is not defined 
+[2022-12-05 14:44:56] error Error in saveOrderController MongoServerError: E11000 duplicate key error collection: proyectov2.orders index: orderNro_1 dup key: { orderNro: 1 } 
+[2022-12-05 14:49:45] error Error in saveOrderController MongoServerError: E11000 duplicate key error collection: proyectov2.orders index: orderNro_1 dup key: { orderNro: 4 } 
