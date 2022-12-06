@@ -22,7 +22,7 @@ const saveOrderController = async (req, res) => {
   try {
     const order = req.body;
     let counter = await getLastOrder();
-    counter.length === 0 ? order.orderNro = 0 : order.orderNro = counter[0].orderNro + 1;
+    counter.length === 0 ? order.orderNro = 1 : order.orderNro = counter[0].orderNro + 1;
     let result = await saveOrder(order);
     return res.status(200).send(result);
   } catch (error) {
