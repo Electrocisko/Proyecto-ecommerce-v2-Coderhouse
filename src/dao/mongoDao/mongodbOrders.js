@@ -14,6 +14,11 @@ export default class MongoOrders extends MongoDBcontainer {
     getLastorder = async () => {
         let result = await this.model.find().limit(1).sort({$natural:-1});
         return result;
+    };
+
+    dropOrders = async () => {
+        let result = await this.model.drop();
+        return result;
     }
 }
 

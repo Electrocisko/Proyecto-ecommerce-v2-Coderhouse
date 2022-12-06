@@ -20,12 +20,16 @@ const getLastOrder = async () => {
     return data;
 }
 
-
+const delleteAllOrders = async () => {
+    let data = await services.ordersService.dropOrders();
+    return data;
+}
 
 
 export {
     getAllOrders,
     saveOrder,
     getOrderByNro,
-    getLastOrder
+    getLastOrder,
+    delleteAllOrders
 }

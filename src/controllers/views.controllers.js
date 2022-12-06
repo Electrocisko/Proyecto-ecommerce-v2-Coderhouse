@@ -85,7 +85,7 @@ const viewEnterProductController = async (req, res) => {
   const token = req.cookies[dotenvConfig.jwt.COOKIE];
   if (!token) return res.redirect("/login");
   const user = jwt.verify(token, dotenvConfig.jwt.SECRET);
-  if (user.role === 'user') return res.redirect('/menu')
+  if (user.role === "user") return res.redirect("/menu");
   res.render("pages/enterProduct.ejs");
 };
 
@@ -97,10 +97,9 @@ const viewModifiedProductController = async (req, res) => {
   const token = req.cookies[dotenvConfig.jwt.COOKIE];
   if (!token) return res.redirect("/login");
   const user = jwt.verify(token, dotenvConfig.jwt.SECRET);
-  if (user.role === 'user') return res.redirect('/menu')
+  if (user.role === "user") return res.redirect("/menu");
   res.render("pages/modifiedProduct.ejs");
 };
-
 
 const viewProductDetailController = async (req, res) => {
   logger.log(
@@ -111,11 +110,11 @@ const viewProductDetailController = async (req, res) => {
   if (!token) return res.redirect("/login");
   const user = jwt.verify(token, dotenvConfig.jwt.SECRET);
   let prodId = req.query.productId;
-  let product = await services.productsService.getById(prodId)
-  res.render('pages/productDetail.ejs', {product})
+  let product = await services.productsService.getById(prodId);
+  res.render("pages/productDetail.ejs", { product });
 };
 
-const viewProductDeleteController = async (req,res) => {
+const viewProductDeleteController = async (req, res) => {
   logger.log(
     "info",
     `request type ${req.method} en route ${req.path} ${new Date()}`
@@ -123,11 +122,9 @@ const viewProductDeleteController = async (req,res) => {
   const token = req.cookies[dotenvConfig.jwt.COOKIE];
   if (!token) return res.redirect("/login");
   const user = jwt.verify(token, dotenvConfig.jwt.SECRET);
-  if (user.role === 'user') return res.redirect('/menu')
+  if (user.role === "user") return res.redirect("/menu");
   res.render("pages/deleteProduct.ejs");
-}
-
-
+};
 
 export {
   viewLoginController,
@@ -140,5 +137,5 @@ export {
   viewEnterProductController,
   viewModifiedProductController,
   viewProductDetailController,
-  viewProductDeleteController
+  viewProductDeleteController,
 };

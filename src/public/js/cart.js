@@ -5,6 +5,8 @@ let total = document.getElementById("total-price");
 let orderToSend = document.getElementById("order");
 let cartId = document.getElementById("cartId").textContent;
 let userMail = document.getElementById("email").textContent;
+let addressBuyer = document.getElementById('address-buyer').textContent;
+
 
 let sum = 0;
 
@@ -45,12 +47,43 @@ let emptyCart = (id) => {
   });
 };
 
-sendMail.addEventListener("click", (evt) => {
-  let data = { message: orderToSend.innerHTML, cartId, userMail };
-  let url = "/api/messages/mail";
-  Swal.fire("Orden enviado");
-  handleSubmit(url, data);
-});
+// sendMail.addEventListener("click", (evt) => {
+//   let data = { message: orderToSend.innerHTML, cartId, userMail };
+//   let url = "/api/messages/mail";
+//   Swal.fire("Orden enviado");
+//   handleSubmit(url, data);
+// });
+
+
+sendMail.addEventListener('click', () => {
+
+let url = '/api/carts/'+cartId+'/products'
+
+  fetch(url)
+    .then((response) => response.json())
+    .then((result) => { 
+      const items = result[0].products.map((item) => {
+          return {
+            name: item.product.name,
+            quantity: item.quantity
+          }
+      });
+
+      let data = {
+        items: items,
+        buyerEmail: userMail,
+        buyerAddress: addressBuyer,
+    }
+      let = url = 'api/orders'
+      handleSubmit(url,data)
+    
+      console.log('mandando orden')
+    });
+  
+})
+
+
+
 
 const handleSubmit = (url, order) => {
   fetch(url, {
@@ -63,7 +96,7 @@ const handleSubmit = (url, order) => {
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
-      window.location.href = "/";
+      //window.location.href = "/";
     });
 };
 
