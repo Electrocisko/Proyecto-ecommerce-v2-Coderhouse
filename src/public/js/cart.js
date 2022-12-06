@@ -8,6 +8,7 @@ let userMail = document.getElementById("email").textContent;
 let addressBuyer = document.getElementById("address-buyer").textContent;
 
 let sum = 0;
+let orderNro;
 
 for (let index = 0; index < array.length; index++) {
   const element = array[index];
@@ -46,13 +47,6 @@ let emptyCart = (id) => {
   });
 };
 
-// sendMail.addEventListener("click", (evt) => {
-//   let data = { message: orderToSend.innerHTML, cartId, userMail };
-//   let url = "/api/messages/mail";
-//   Swal.fire("Orden enviado");
-//   handleSubmit(url, data);
-// });
-
 sendMail.addEventListener("click", () => {
   let url = "/api/carts/" + cartId + "/products";
 
@@ -86,12 +80,13 @@ const handleSubmit = (url, order) => {
   })
     .then((response) => response.json())
     .then((data) => {
+      orderNro = data.orderNro;
+
       const sweet = () => {
         Swal.fire({
           title: "Su orden fue enviado",
           confirmButtonText: "Ok",
         }).then((result) => {
-          /* Read more about isConfirmed, isDenied below */
           if (result.isConfirmed) {
             Swal.fire("Saved!", "", "success");
 
@@ -107,6 +102,26 @@ const handleSubmit = (url, order) => {
         method: "PUT",
         headers: {
           "Content-type": "application/json",
+        },
+      });
+
+      let items = data.items;
+      let text = `<h3>Orden Nro: ${orderNro} </h3>`;
+      for (let i = 0; i < items.length; i++) {
+        text = text + `<p> ${items[i].name} x ${items[i].quantity} un </p>`;
+      }
+      text =
+        text +
+        `<h4>Dirección de entrega: ${addressBuyer}</h4>
+        <h4>Email: ${userMail}</h4>`;
+
+      let orderMail = { message: text, cartId, userMail };
+
+      fetch("/api/messages/mail", {
+        method: "POST",
+        body: JSON.stringify(orderMail),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
         },
       });
     });
